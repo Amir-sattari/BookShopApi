@@ -9,8 +9,27 @@ namespace BookShopApi.Mappers
         {
             return new PublicationDto
             {
+                Id = publication.Id,
                 Name = publication.Name,
                 ImageUrl = publication.ImageUrl,
+            };
+        }
+
+        public static Publication ToPublicationFromCreateDto(this CreatePublicationDto publicationDto)
+        {
+            return new Publication
+            {
+                Name = publicationDto.Name,
+                ImageUrl = publicationDto.ImageUrl,
+            };
+        }
+
+        public static Publication ToPublicationFromUpdateDto(this UpdatePublicationDto publicationDto)
+        {
+            return new Publication
+            {
+                Name = publicationDto.Name,
+                ImageUrl = publicationDto.ImageUrl,
             };
         }
     }

@@ -8,7 +8,7 @@ namespace BookShopApi.Interfaces
         Task<ICollection<Publication>> GetAllPublicationsAsync();
         Task<Publication?> GetPublicationByIdAsync(int id);
         Task<Publication> CreatePublicationAsync(Publication publicationDto);
-        Task<Publication?> UpdatePublicationAsync(UpdatePublicationDto publicationDto, int id);
+        Task<Publication?> UpdatePublicationAsync(Publication publicationDto, int id);
         Task<Publication?> DeletePublicationAsync(int id);
     }
 }

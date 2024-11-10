@@ -18,5 +18,94 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.PublicationController",
+    "Method": "CreatePublicationAsync",
+    "RelativePath": "api/Publication",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "publicationDto",
+        "Type": "BookShopApi.Dtos.CreatePublicationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookShopApi.Models.Publication",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.PublicationController",
+    "Method": "GetPublicationByIdAsync",
+    "RelativePath": "api/Publication/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookShopApi.Models.Publication",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.PublicationController",
+    "Method": "UpdatePublicationAsync",
+    "RelativePath": "api/Publication/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "publicationDto",
+        "Type": "BookShopApi.Dtos.UpdatePublicationDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.PublicationController",
+    "Method": "DeletePublicationAsync",
+    "RelativePath": "api/Publication/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
