@@ -49,13 +49,13 @@ namespace BookShopApi.Controllers.V1
 
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdatePublicationAsync([FromBody] UpdatePublicationDto publicationDto, int id)
+        public async Task<IActionResult> UpdatePublicationAsync([FromBody] UpdatePublicationDto publicationDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
 
-            var publication = await _publicationRepo.UpdatePublicationAsync(publicationDto.ToPublicationFromUpdateDto(), id);
+            var publication = await _publicationRepo.UpdatePublicationAsync(publicationDto, id);
 
             if (publication == null)
                 return NotFound($"The publication with Id: {id}, Not found.");

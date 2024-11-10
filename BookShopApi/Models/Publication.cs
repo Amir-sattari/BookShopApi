@@ -12,6 +12,5 @@ namespace BookShopApi.Models
 
         // Navigation Property
         public ICollection<Book> Books { get; set; } = new List<Book>();
-
     }
 }

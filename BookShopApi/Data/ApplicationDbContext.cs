@@ -16,7 +16,13 @@ namespace BookShopApi.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
+            modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted && !b.Publication.IsDeleted);
+
             modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);
+
+            modelBuilder.Entity<BookSize>().HasQueryFilter(b => !b.IsDeleted);
+
+            modelBuilder.Entity<CoverType>().HasQueryFilter(c => !c.IsDeleted);
 
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
