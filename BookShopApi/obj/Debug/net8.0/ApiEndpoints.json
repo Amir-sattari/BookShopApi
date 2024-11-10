@@ -29,7 +29,7 @@
     "Parameters": [
       {
         "Name": "publicationDto",
-        "Type": "BookShopApi.Dtos.CreatePublicationDto",
+        "Type": "BookShopApi.Dtos.Publication.CreatePublicationDto",
         "IsRequired": true
       }
     ],
@@ -81,7 +81,7 @@
     "Parameters": [
       {
         "Name": "publicationDto",
-        "Type": "BookShopApi.Dtos.UpdatePublicationDto",
+        "Type": "BookShopApi.Dtos.Publication.UpdatePublicationDto",
         "IsRequired": true
       },
       {

@@ -1,4 +1,4 @@
-﻿using BookShopApi.Dtos;
+﻿using BookShopApi.Dtos.Publication;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
@@ -51,10 +51,10 @@ namespace BookShopApi.Controllers.V1
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdatePublicationAsync([FromBody] UpdatePublicationDto publicationDto, int id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            
+
             var publication = await _publicationRepo.UpdatePublicationAsync(publicationDto.ToPublicationFromUpdateDto(), id);
 
             if (publication == null)
@@ -69,7 +69,7 @@ namespace BookShopApi.Controllers.V1
             var publication = await _publicationRepo.DeletePublicationAsync(id);
 
             if (publication == null)
-                return NotFound();
+                return NotFound($"The publication with Id: {id}, Not found.");
 
             return NoContent();
         }

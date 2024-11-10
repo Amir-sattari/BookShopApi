@@ -16,6 +16,7 @@ namespace BookShopApi.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
+            modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);
 
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
@@ -58,6 +59,7 @@ namespace BookShopApi.Data
                 ((IAuditable)entry.Entity).UpdatedAt = DateTime.UtcNow;
             }
         }
+
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Publication> Publications { get; set; }

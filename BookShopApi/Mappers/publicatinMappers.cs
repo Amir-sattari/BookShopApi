@@ -1,4 +1,4 @@
-﻿using BookShopApi.Dtos;
+﻿using BookShopApi.Dtos.Publication;
 using BookShopApi.Models;
 
 namespace BookShopApi.Mappers

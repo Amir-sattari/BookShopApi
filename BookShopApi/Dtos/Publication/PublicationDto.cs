@@ -1,4 +1,4 @@
-﻿namespace BookShopApi.Dtos
+﻿namespace BookShopApi.Dtos.Publication
 {
     public class PublicationDto
     {
