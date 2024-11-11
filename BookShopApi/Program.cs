@@ -19,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 
 builder.Services.AddScoped<IPublicationRepository, PublicationRepository>();
 builder.Services.AddScoped<IBookSizeRepository, BookSizeRepository>();
+builder.Services.AddScoped<ICoverTypeRepository, CoverTypeRepository>();
 
 var app = builder.Build();
 
