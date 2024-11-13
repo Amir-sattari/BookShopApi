@@ -42,9 +42,8 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var coverType = coverTypeDto.ToCoverTypeFromCreate();
-            await _coverTypeRepo.CreateCoverTypeAsync(coverType);
-            return Created($"api/coverType/{coverType.Id}", coverType.ToCoverTypeDto());
+            var createdCoverType = await _coverTypeRepo.CreateCoverTypeAsync(coverTypeDto);
+            return Created($"api/coverType/{createdCoverType.Id}", createdCoverType.ToCoverTypeDto());
         }
 
         [HttpPut("{id:int}")]

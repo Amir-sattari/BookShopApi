@@ -1,6 +1,7 @@
 ﻿using BookShopApi.Data;
 using BookShopApi.Dtos.BookSize;
 using BookShopApi.Interfaces;
+using BookShopApi.Mappers;
 using BookShopApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,21 +26,22 @@ namespace BookShopApi.Repositories
             return await _context.BookSizes.FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task<BookSize> CreateBookSizeAsync(BookSize bookSize)
+        public async Task<BookSize> CreateBookSizeAsync(CreateBookSizeDto bookSizeDto)
         {
-            await _context.BookSizes.AddAsync(bookSize);
+            var book = bookSizeDto.SetDataToBookSizeFromCreateDto();
+            await _context.BookSizes.AddAsync(book);
             await _context.SaveChangesAsync();
-            return bookSize;
+            return book;
         }
 
-        public async Task<BookSize?> UpdateBookSizeAsync(UpdateBookSizeDto bookSize, int id)
+        public async Task<BookSize?> UpdateBookSizeAsync(UpdateBookSizeDto bookSizeDto, int id)
         {
             var bookSizeModel = await _context.BookSizes.FirstOrDefaultAsync(b => b.Id == id);
 
             if (bookSizeModel == null)
                 return null;
 
-            bookSizeModel.Name = bookSize.Name;
+            bookSizeModel.SetDataToBookSizeFromUpdateDto(bookSizeDto);
 
             await _context.SaveChangesAsync();
             return bookSizeModel;

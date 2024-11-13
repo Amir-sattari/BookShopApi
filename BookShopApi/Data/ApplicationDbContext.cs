@@ -8,7 +8,7 @@ namespace BookShopApi.Data
     {
         public ApplicationDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -16,7 +16,8 @@ namespace BookShopApi.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
-            modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted && !b.Publication.IsDeleted);
+            modelBuilder.Entity<Book>()
+                .HasQueryFilter(b => !b.IsDeleted && !b.Publication.IsDeleted && !b.BookSize.IsDeleted && !b.CoverType.IsDeleted);
 
             modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);
 
@@ -24,11 +25,26 @@ namespace BookShopApi.Data
 
             modelBuilder.Entity<CoverType>().HasQueryFilter(c => !c.IsDeleted);
 
+            modelBuilder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
+
+            modelBuilder.Entity<BookCategory>(x => x.HasKey(b => new { b.BookId, b.CategoryId}));
+            modelBuilder.Entity<BookCategory>().HasQueryFilter(b => !b.Category.IsDeleted && !b.Book.IsDeleted);
+
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
                 .WithMany(p => p.Books)
                 .HasForeignKey(b => b.PublicationId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BookCategory>()
+                .HasOne(b => b.Book)
+                .WithMany(b => b.BookCategories)
+                .HasForeignKey(b => b.BookId);
+
+            modelBuilder.Entity<BookCategory>()
+                .HasOne(b => b.Category)
+                .WithMany(b => b.BookCategories)
+                .HasForeignKey(b => b.CategoryId);
         }
 
         public override int SaveChanges()
@@ -59,7 +75,7 @@ namespace BookShopApi.Data
         {
             foreach (var entry in ChangeTracker.Entries().Where(e => (e.State == EntityState.Added || e.State == EntityState.Modified) && e.Entity is IAuditable))
             {
-                if(entry.State == EntityState.Added)
+                if (entry.State == EntityState.Added)
                     ((IAuditable)entry.Entity).CreatedAt = DateTime.UtcNow;
 
                 ((IAuditable)entry.Entity).UpdatedAt = DateTime.UtcNow;
@@ -71,5 +87,7 @@ namespace BookShopApi.Data
         public DbSet<Publication> Publications { get; set; }
         public DbSet<BookSize> BookSizes { get; set; }
         public DbSet<CoverType> CoverTypes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<BookCategory> BookCategories { get; set; }
     }
 }

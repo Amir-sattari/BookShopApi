@@ -44,9 +44,8 @@ namespace BookShopApi.Controllers.V1
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var book = bookDto.ToBookFromCreateDto();
-                await _bookRepo.CreateBookAsync(book);
-                return Created($"api/book/{book.Id}", book.ToBookDto());
+                var createdBook = await _bookRepo.CreateBookAsync(bookDto);
+                return Created($"api/book/{createdBook.Id}", createdBook.ToBookDto());
             }
             catch (ArgumentException e)
             {

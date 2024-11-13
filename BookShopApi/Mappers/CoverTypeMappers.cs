@@ -1,4 +1,5 @@
-﻿using BookShopApi.Dtos.CoverType;
+﻿using BookShopApi.Dtos.Category;
+using BookShopApi.Dtos.CoverType;
 using BookShopApi.Models;
 
 namespace BookShopApi.Mappers
@@ -20,6 +21,19 @@ namespace BookShopApi.Mappers
             {
                 Name = coverTypeDto.Name,
             };
+        }
+
+        public static CoverType SetDataToCoverTypeFromCreateDto(this CreateCoverTypeDto coverTypeDto)
+        {
+            return new CoverType
+            {
+                Name = coverTypeDto.Name,
+            };
+        }
+
+        public static void SetDataToCoverTypeFromUpdateDto(this CoverType coverType, UpdateCoverTypeDto coverTypeDto)
+        {
+            coverType.Name = coverTypeDto.Name;
         }
     }
 }

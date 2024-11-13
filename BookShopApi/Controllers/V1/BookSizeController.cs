@@ -43,9 +43,8 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var bookSizeModel = bookSizeDto.ToBookSizeFromCreateDto();
-            await _bookSizeRepo.CreateBookSizeAsync(bookSizeModel);
-            return Created($"api/bookSize/{bookSizeModel.Id}", bookSizeModel.ToBookSizeDto());
+            var createdBookSize = await _bookSizeRepo.CreateBookSizeAsync(bookSizeDto);
+            return Created($"api/bookSize/{createdBookSize.Id}", createdBookSize.ToBookSizeDto());
         }
 
         [HttpPut("{id:int}")]

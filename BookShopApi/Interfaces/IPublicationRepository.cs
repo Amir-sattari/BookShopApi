@@ -7,7 +7,7 @@ namespace BookShopApi.Interfaces
     {
         Task<IEnumerable<Publication>> GetAllPublicationsAsync();
         Task<Publication?> GetPublicationByIdAsync(int id);
-        Task<Publication> CreatePublicationAsync(Publication publicationDto);
+        Task<Publication> CreatePublicationAsync(CreatePublicationDto publicationDto);
         Task<Publication?> UpdatePublicationAsync(UpdatePublicationDto publicationDto, int id);
         Task<Publication?> DeletePublicationAsync(int id);
     }

@@ -42,9 +42,8 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var publication = publicationDto.ToPublicationFromCreateDto();
-            await _publicationRepo.CreatePublicationAsync(publication);
-            return Created($"api/publication/{publication.Id}", publication.ToPublicationDto());
+            var createdPublication = await _publicationRepo.CreatePublicationAsync(publicationDto);
+            return Created($"api/publication/{createdPublication.Id}", createdPublication.ToPublicationDto());
         }
 
 

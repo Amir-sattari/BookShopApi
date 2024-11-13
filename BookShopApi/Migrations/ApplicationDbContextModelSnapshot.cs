@@ -95,6 +95,21 @@ namespace BookShopApi.Migrations
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("BookShopApi.Models.BookCategory", b =>
+                {
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("BookCategories");
+                });
+
             modelBuilder.Entity("BookShopApi.Models.BookSize", b =>
                 {
                     b.Property<int>("Id")
@@ -116,6 +131,29 @@ namespace BookShopApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BookSizes");
+                });
+
+            modelBuilder.Entity("BookShopApi.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BookShopApi.Models.CoverType", b =>
@@ -195,9 +233,38 @@ namespace BookShopApi.Migrations
                     b.Navigation("Publication");
                 });
 
+            modelBuilder.Entity("BookShopApi.Models.BookCategory", b =>
+                {
+                    b.HasOne("BookShopApi.Models.Book", "Book")
+                        .WithMany("BookCategories")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookShopApi.Models.Category", "Category")
+                        .WithMany("BookCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("BookShopApi.Models.Book", b =>
+                {
+                    b.Navigation("BookCategories");
+                });
+
             modelBuilder.Entity("BookShopApi.Models.BookSize", b =>
                 {
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("BookShopApi.Models.Category", b =>
+                {
+                    b.Navigation("BookCategories");
                 });
 
             modelBuilder.Entity("BookShopApi.Models.CoverType", b =>

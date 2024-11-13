@@ -1,6 +1,7 @@
 ﻿using BookShopApi.Data;
 using BookShopApi.Dtos.CoverType;
 using BookShopApi.Interfaces;
+using BookShopApi.Mappers;
 using BookShopApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,8 +26,9 @@ namespace BookShopApi.Repositories
             return await _context.CoverTypes.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<CoverType> CreateCoverTypeAsync(CoverType coverType)
+        public async Task<CoverType> CreateCoverTypeAsync(CreateCoverTypeDto coverTypeDto)
         {
+            var coverType = coverTypeDto.SetDataToCoverTypeFromCreateDto();
             await _context.CoverTypes.AddAsync(coverType);
             await _context.SaveChangesAsync();
             return coverType;
@@ -39,7 +41,7 @@ namespace BookShopApi.Repositories
             if (coverType == null)
                 return null;
 
-            coverType.Name = coverTypeDto.Name;
+            coverType.SetDataToCoverTypeFromUpdateDto(coverTypeDto);
 
             await _context.SaveChangesAsync();
             return coverType;

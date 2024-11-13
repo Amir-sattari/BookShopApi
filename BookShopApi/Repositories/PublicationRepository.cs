@@ -1,6 +1,7 @@
 ﻿using BookShopApi.Data;
 using BookShopApi.Dtos.Publication;
 using BookShopApi.Interfaces;
+using BookShopApi.Mappers;
 using BookShopApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,8 +26,9 @@ namespace BookShopApi.Repositories
             return await _context.Publications.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Publication> CreatePublicationAsync(Publication publication)
+        public async Task<Publication> CreatePublicationAsync(CreatePublicationDto publicationDto)
         {
+            var publication = publicationDto.SetDataToPublicationFromCreateDto();
             await _context.Publications.AddAsync(publication);
             await _context.SaveChangesAsync();
             return publication;
@@ -39,8 +41,7 @@ namespace BookShopApi.Repositories
             if (publication == null)
                 return null;
 
-            publication.Name = publicationDto.Name;
-            publication.ImageUrl = publicationDto.ImageUrl;
+            publication.SetDataToPublicationFromUpdateDto(publicationDto);
 
             await _context.SaveChangesAsync();
             return publication;

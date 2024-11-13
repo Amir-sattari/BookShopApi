@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BookShopApi.Dtos.Category;
+using BookShopApi.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookShopApi.Dtos.Book
 {
-    public class UpdateBookDto
+    public class UpdateBookDto : IBookDependenciesDto
     {
         [Required]
         public string Title { get; set; } = string.Empty;
@@ -31,6 +33,9 @@ namespace BookShopApi.Dtos.Book
 
         [Required]
         public int PrintSeries { get; set; }
+
+        [Required]
+        public List<int> CategoryIds { get; set; } = new List<int>();
 
         // Foreign Keys
         [Required]

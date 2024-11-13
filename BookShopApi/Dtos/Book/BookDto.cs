@@ -1,4 +1,5 @@
-﻿using BookShopApi.Models;
+﻿using BookShopApi.Dtos.Category;
+using BookShopApi.Models;
 
 namespace BookShopApi.Dtos.Book
 {
@@ -14,6 +15,7 @@ namespace BookShopApi.Dtos.Book
         public int Quantity { get; set; }
         public int PageCount { get; set; }
         public int PrintSeries { get; set; }
+        public List<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
 
         // Foreign Keys
         public int PublicationId { get; set; }

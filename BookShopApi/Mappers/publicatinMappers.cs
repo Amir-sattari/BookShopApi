@@ -1,4 +1,5 @@
-﻿using BookShopApi.Dtos.Publication;
+﻿using BookShopApi.Dtos.CoverType;
+using BookShopApi.Dtos.Publication;
 using BookShopApi.Models;
 
 namespace BookShopApi.Mappers
@@ -31,6 +32,21 @@ namespace BookShopApi.Mappers
                 Name = publicationDto.Name,
                 ImageUrl = publicationDto.ImageUrl,
             };
+        }
+
+        public static Publication SetDataToPublicationFromCreateDto(this CreatePublicationDto publicationDto)
+        {
+            return new Publication
+            {
+                Name = publicationDto.Name,
+                ImageUrl = publicationDto.ImageUrl
+            };
+        }
+
+        public static void SetDataToPublicationFromUpdateDto(this Publication publication, UpdatePublicationDto publicationDto)
+        {
+            publication.Name = publicationDto.Name;
+            publication.ImageUrl = publicationDto.ImageUrl;
         }
     }
 }

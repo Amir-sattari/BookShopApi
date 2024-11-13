@@ -14,12 +14,17 @@ namespace BookShopApi.Mappers
             };
         }
 
-        public static BookSize ToBookSizeFromCreateDto(this CreateBookSizeDto bookSizeDto)
+        public static BookSize SetDataToBookSizeFromCreateDto(this CreateBookSizeDto bookSizeDto)
         {
             return new BookSize
             {
                 Name = bookSizeDto.Name,
             };
+        }
+
+        public static void SetDataToBookSizeFromUpdateDto(this BookSize bookSize, UpdateBookSizeDto bookSizeDto)
+        {
+            bookSize.Name = bookSizeDto.Name;
         }
     }
 }

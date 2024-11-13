@@ -29,6 +29,7 @@ namespace BookShopApi.Models
         public Publication Publication { get; set; }
         public BookSize BookSize { get; set; }
         public CoverType CoverType { get; set; }
+        public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
 
     }
 }
