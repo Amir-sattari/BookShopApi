@@ -19,8 +19,7 @@ namespace BookShopApi.Dtos.Book
         [MinLength(128, ErrorMessage = "Description must be at least 128 characters")]
         public string Description { get; set; } = string.Empty;
 
-        [Required]
-        public string ImageUrl { get; set; } = string.Empty;
+        public IFormFile? ImageFile { get; set; }
 
         [Required]
         public decimal Price { get; set; }

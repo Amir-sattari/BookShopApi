@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "cc9JbiXBOXpntP0LhmFzI0wrza/x34JnVUwGV34SDyQ=",
+  "Hash": "PdXr21FHPRhPGm+VPhySOkOt0ZZk4og4s3hh6kqzQso=",
   "Source": "BookShopApi",
   "BasePath": "_content/BookShopApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookShopApi\\wwwroot",
+      "Source": "BookShopApi",
+      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
+      "BasePath": "_content/BookShopApi",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

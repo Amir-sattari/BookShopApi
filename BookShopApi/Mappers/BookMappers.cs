@@ -5,7 +5,7 @@ namespace BookShopApi.Mappers
 {
     public static class BookMappers
     {
-        public static BookDto ToBookDto(this Book book)
+        public static BookDto ToBookDto(this Book book, string imageUrl)
         {
             return new BookDto
             {
@@ -14,7 +14,7 @@ namespace BookShopApi.Mappers
                 Author = book.Author,
                 Translator = book.Translator,
                 Description = book.Description,
-                ImageUrl = book.ImageUrl,
+                ImageUrl = imageUrl,
                 Price = book.Price,
                 Quantity = book.Quantity,
                 PageCount = book.PageCount,
@@ -30,7 +30,7 @@ namespace BookShopApi.Mappers
             };
         }
 
-        public static Book ToBookFromCreateDto(this CreateBookDto bookDto)
+        public static Book ToBookFromCreateDto(this CreateBookDto bookDto, string imageUrl)
         {
             return new Book
             {
@@ -38,7 +38,7 @@ namespace BookShopApi.Mappers
                 Author = bookDto.Author,
                 Translator = bookDto.Translator,
                 Description = bookDto.Description,
-                ImageUrl = bookDto.ImageUrl,
+                ImageUrl = imageUrl,
                 Price = bookDto.Price,
                 Quantity = bookDto.Quantity,
                 PageCount = bookDto.PageCount,
@@ -55,7 +55,7 @@ namespace BookShopApi.Mappers
             book.Author = bookDto.Author;
             book.Translator = bookDto.Translator;
             book.Description = bookDto.Description;
-            book.ImageUrl = bookDto.ImageUrl;
+            //book.ImageUrl = imageUrl;
             book.Price = bookDto.Price;
             book.Quantity = bookDto.Quantity;
             book.PageCount = bookDto.PageCount;
@@ -65,7 +65,7 @@ namespace BookShopApi.Mappers
             book.CoverTypeId = bookDto.CoverTypeId;
         }
 
-        public static Book SetDataToBookFromCreateDto(this CreateBookDto bookDto)
+        public static Book SetDataToBookFromCreateDto(this CreateBookDto bookDto, string imageUrl)
         {
             return new Book
             {
@@ -73,7 +73,7 @@ namespace BookShopApi.Mappers
                 Author = bookDto.Author,
                 Translator = bookDto.Translator,
                 Description = bookDto.Description,
-                ImageUrl = bookDto.ImageUrl,
+                ImageUrl = imageUrl,
                 Price = bookDto.Price,
                 Quantity = bookDto.Quantity,
                 PageCount = bookDto.PageCount,

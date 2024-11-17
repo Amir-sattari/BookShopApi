@@ -28,9 +28,69 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookDto",
-        "Type": "BookShopApi.Dtos.Book.CreateBookDto",
-        "IsRequired": true
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Author",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Translator",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrintSeries",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublicationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "BookSizeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CoverTypeId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -80,9 +140,69 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookDto",
-        "Type": "BookShopApi.Dtos.Book.UpdateBookDto",
-        "IsRequired": true
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Author",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Translator",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrintSeries",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PublicationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "BookSizeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CoverTypeId",
+        "Type": "System.Int32",
+        "IsRequired": false
       },
       {
         "Name": "id",
@@ -246,9 +366,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "categoryDto",
-        "Type": "BookShopApi.Dtos.Category.CreateCategoryDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -298,9 +423,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "categoryDto",
-        "Type": "BookShopApi.Dtos.Category.UpdateCategoryDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       },
       {
         "Name": "id",

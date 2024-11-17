@@ -21,7 +21,7 @@ namespace BookShopApi.Controllers.V1
         public async Task<ActionResult<IEnumerable<Category>>> GetAllCategoriesAsync()
         {
             var categories = await _categoryRepo.GetAllCategorysAsync();
-            var categoriesDto = categories.Select(c => c.ToCategoryDto());
+            var categoriesDto = categories.Select(c => c.ToCategoryDto($"{Request.Scheme}://{Request.Host}{c.ImageUrl}"));
             return Ok(categoriesDto);
         }
 
@@ -33,11 +33,11 @@ namespace BookShopApi.Controllers.V1
             if (category == null)
                 return NotFound(new { errorMessage = $"The category with id: {id}, Not Found." });
 
-            return Ok(category.ToCategoryDto());
+            return Ok(category.ToCategoryDto($"{Request.Scheme}://{Request.Host}{category.ImageUrl}"));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Category>> CreateCategoryAsync([FromBody] CreateCategoryDto categoryDto)
+        public async Task<ActionResult<Category>> CreateCategoryAsync([FromForm] CreateCategoryDto categoryDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -48,7 +48,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateCategoryAsync([FromBody] UpdateCategoryDto categoryDto, [FromRoute] int id)
+        public async Task<IActionResult> UpdateCategoryAsync([FromForm] UpdateCategoryDto categoryDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

@@ -21,7 +21,7 @@ namespace BookShopApi.Controllers.V1
         public async Task<ActionResult<IEnumerable<Book>>> GetAllBooksAsync()
         {
             var books = await _bookRepo.GetAllBooksAsync();
-            var booksDto = books.Select(b => b.ToBookDto()).ToList();
+            var booksDto = books.Select(b => b.ToBookDto($"{Request.Scheme}://{Request.Host}{b.ImageUrl}")).ToList();
             return Ok(booksDto);
         }
 
@@ -33,11 +33,11 @@ namespace BookShopApi.Controllers.V1
             if (book == null)
                 return NotFound(new { ErrorMessage = $"The book with Id: {id}, Not found." });
 
-            return Ok(book.ToBookDto());
+            return Ok(book.ToBookDto($"{Request.Scheme}://{Request.Host}{book.ImageUrl}"));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Book>> CreateBookAsync([FromBody] CreateBookDto bookDto)
+        public async Task<ActionResult<Book>> CreateBookAsync([FromForm] CreateBookDto bookDto)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace BookShopApi.Controllers.V1
                     return BadRequest(ModelState);
 
                 var createdBook = await _bookRepo.CreateBookAsync(bookDto);
-                return Created($"api/book/{createdBook.Id}", createdBook.ToBookDto());
+                return Created($"api/book/{createdBook.Id}", createdBook.ToBookDto($"{Request.Scheme}://{Request.Host}{createdBook.ImageUrl}"));
             }
             catch (ArgumentException e)
             {
@@ -58,7 +58,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateBookAsync([FromBody] UpdateBookDto bookDto, [FromRoute] int id)
+        public async Task<IActionResult> UpdateBookAsync([FromForm] UpdateBookDto bookDto, [FromRoute] int id)
         {
             try
             {

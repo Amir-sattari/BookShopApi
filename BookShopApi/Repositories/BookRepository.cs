@@ -10,10 +10,12 @@ namespace BookShopApi.Repositories
     public class BookRepository : IBookRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileService _fileService;
 
-        public BookRepository(ApplicationDbContext applicationDbContext)
+        public BookRepository(ApplicationDbContext applicationDbContext, IFileService fileService)
         {
             _context = applicationDbContext;
+            _fileService = fileService;
         }
 
         public async Task<IEnumerable<Book>> GetAllBooksAsync()
@@ -30,7 +32,10 @@ namespace BookShopApi.Repositories
         {
             await ValidateBookDependenciesAsync(bookDto);
 
-            var bookModel = bookDto.SetDataToBookFromCreateDto();
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var imageUrl = await _fileService.SaveFileAsync(bookDto.ImageFile, allowedExtensions, "Book");
+
+            var bookModel = bookDto.SetDataToBookFromCreateDto(imageUrl);
 
             await AddCategoriesToBookAsync(bookModel, bookDto.CategoryIds);
 
@@ -48,7 +53,18 @@ namespace BookShopApi.Repositories
             if (book == null)
                 return null;
 
+            if (bookDto.ImageFile != null)
+            {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+                
+                if (!string.IsNullOrEmpty(book.ImageUrl))
+                    _fileService.DeleteFile(book.ImageUrl);
+
+                book.ImageUrl = await _fileService.SaveFileAsync(bookDto.ImageFile, allowedExtensions, "Book");
+            }
+
             book.SetDataToBookFromUpdateDto(bookDto);
+
             await UpdateBookCategoriesAsync(book, bookDto.CategoryIds);
 
             await _context.SaveChangesAsync();

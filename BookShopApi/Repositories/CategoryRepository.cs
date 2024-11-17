@@ -10,10 +10,12 @@ namespace BookShopApi.Repositories
     public class CategoryRepository : ICategoryRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileService _fileService;
 
-        public CategoryRepository(ApplicationDbContext applicationDbContext)
+        public CategoryRepository(ApplicationDbContext applicationDbContext, IFileService fileService)
         {
             _context = applicationDbContext;
+            _fileService = fileService;
         }
 
 
@@ -29,7 +31,16 @@ namespace BookShopApi.Repositories
 
         public async Task<Category> CreateCategoryAsync(CreateCategoryDto categoryDto)
         {
-            var category = categoryDto.SetDataToCategoryFromCreateDto();
+            //var category = categoryDto.SetDataToCategoryFromCreateDto();
+
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            var imageUrl = await _fileService.SaveFileAsync(categoryDto.ImageFile, allowedExtensions, "Category");
+
+            var category = new Category
+            {
+                Name = categoryDto.Name,
+                ImageUrl = imageUrl
+            };
 
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
@@ -43,7 +54,18 @@ namespace BookShopApi.Repositories
             if (category == null)
                 return null;
 
-            category.SetDataToCategoryFromUpdateDto(categoryDto);
+            if (categoryDto.ImageFile != null)
+            {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+
+                if (!string.IsNullOrEmpty(category.ImageUrl))
+                    _fileService.DeleteFile(category.ImageUrl);
+
+                category.ImageUrl = await _fileService.SaveFileAsync(categoryDto.ImageFile, allowedExtensions, "Category");
+            }
+
+            //category.SetDataToCategoryFromUpdateDto(categoryDto);
+            category.Name = categoryDto.Name;
 
             await _context.SaveChangesAsync();
             return category;

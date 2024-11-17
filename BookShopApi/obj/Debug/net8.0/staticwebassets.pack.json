@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\30041d4e-59fa-4278-86c2-f5debc812875.png",
+      "PackagePath": "staticwebassets\\Images\\30041d4e-59fa-4278-86c2-f5debc812875.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookShopApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BookShopApi.props",
+      "PackagePath": "build\\BookShopApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BookShopApi.props",
+      "PackagePath": "buildMultiTargeting\\BookShopApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BookShopApi.props",
+      "PackagePath": "buildTransitive\\BookShopApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

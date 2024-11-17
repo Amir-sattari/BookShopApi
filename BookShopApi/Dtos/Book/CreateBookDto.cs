@@ -21,7 +21,7 @@ namespace BookShopApi.Dtos.Book
         public string Description { get; set; } = string.Empty;
 
         [Required]
-        public string ImageUrl { get; set; } = string.Empty;
+        public IFormFile ImageFile { get; set; }
 
         [Required]
         public decimal Price { get; set; }
