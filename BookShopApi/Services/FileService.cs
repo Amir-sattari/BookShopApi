@@ -42,7 +42,7 @@ namespace BookShopApi.Services
             return $"/Images/{folderName}/{fileName}";
         }
 
-        public void DeleteFile(string fileName)
+        public void DeleteFile(string fileName, string folderName)
         {
             var sanitizedFileName = Path.GetFileName(fileName);
             var filePath = Path.Combine(_imageRootPath, sanitizedFileName);

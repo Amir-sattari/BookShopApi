@@ -3,6 +3,6 @@
     public interface IFileService
     {
         Task<string> SaveFileAsync(IFormFile imageFile, string[] allowedFileExtensions, string folderName);
-        void DeleteFile(string fileName);
+        void DeleteFile(string fileName, string folderName);
     }
 }

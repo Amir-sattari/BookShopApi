@@ -57,9 +57,9 @@ namespace BookShopApi.Repositories
             if (categoryDto.ImageFile != null)
             {
                 var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
-
+                string folderName = "Category";
                 if (!string.IsNullOrEmpty(category.ImageUrl))
-                    _fileService.DeleteFile(category.ImageUrl);
+                    _fileService.DeleteFile(category.ImageUrl, folderName);
 
                 category.ImageUrl = await _fileService.SaveFileAsync(categoryDto.ImageFile, allowedExtensions, "Category");
             }
