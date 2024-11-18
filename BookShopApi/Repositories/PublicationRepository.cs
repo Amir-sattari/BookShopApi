@@ -10,10 +10,12 @@ namespace BookShopApi.Repositories
     public class PublicationRepository : IPublicationRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileService _fileService;
 
-        public PublicationRepository(ApplicationDbContext applicationDbContext)
+        public PublicationRepository(ApplicationDbContext applicationDbContext, IFileService fileService)
         {
             _context = applicationDbContext;
+            _fileService = fileService;
         }
 
         public async Task<IEnumerable<Publication>> GetAllPublicationsAsync()
@@ -28,7 +30,10 @@ namespace BookShopApi.Repositories
 
         public async Task<Publication> CreatePublicationAsync(CreatePublicationDto publicationDto)
         {
-            var publication = publicationDto.SetDataToPublicationFromCreateDto();
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            string imageUrl = await _fileService.SaveFileAsync(publicationDto.ImageFile, allowedExtensions, "Publication");
+
+            var publication = publicationDto.SetDataToPublicationFromCreateDto(imageUrl);
             await _context.Publications.AddAsync(publication);
             await _context.SaveChangesAsync();
             return publication;
@@ -40,6 +45,17 @@ namespace BookShopApi.Repositories
 
             if (publication == null)
                 return null;
+
+            if (publicationDto.ImageFile != null)
+            {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+                string folderName = "Publication";
+
+                if (!string.IsNullOrEmpty(publication.ImageUrl))
+                    _fileService.DeleteFile(publication.ImageUrl, folderName);
+
+                publication.ImageUrl = await _fileService.SaveFileAsync(publicationDto.ImageFile, allowedExtensions, folderName);
+            }
 
             publication.SetDataToPublicationFromUpdateDto(publicationDto);
 

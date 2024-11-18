@@ -6,47 +6,46 @@ namespace BookShopApi.Mappers
 {
     public static class publicatinMappers
     {
-        public static PublicationDto ToPublicationDto(this Publication publication)
+        public static PublicationDto ToPublicationDto(this Publication publication, string imageUrl)
         {
             return new PublicationDto
             {
                 Id = publication.Id,
                 Name = publication.Name,
-                ImageUrl = publication.ImageUrl,
+                ImageUrl = imageUrl,
             };
         }
 
-        public static Publication ToPublicationFromCreateDto(this CreatePublicationDto publicationDto)
+        public static Publication ToPublicationFromCreateDto(this CreatePublicationDto publicationDto, string imageUrl)
         {
             return new Publication
             {
                 Name = publicationDto.Name,
-                ImageUrl = publicationDto.ImageUrl,
+                ImageUrl = imageUrl,
             };
         }
 
-        public static Publication ToPublicationFromUpdateDto(this UpdatePublicationDto publicationDto)
+        public static Publication ToPublicationFromUpdateDto(this UpdatePublicationDto publicationDto, string imageUrl)
         {
             return new Publication
             {
                 Name = publicationDto.Name,
-                ImageUrl = publicationDto.ImageUrl,
+                ImageUrl = imageUrl,
             };
         }
 
-        public static Publication SetDataToPublicationFromCreateDto(this CreatePublicationDto publicationDto)
+        public static Publication SetDataToPublicationFromCreateDto(this CreatePublicationDto publicationDto, string imageUrl)
         {
             return new Publication
             {
                 Name = publicationDto.Name,
-                ImageUrl = publicationDto.ImageUrl
+                ImageUrl = imageUrl
             };
         }
 
         public static void SetDataToPublicationFromUpdateDto(this Publication publication, UpdatePublicationDto publicationDto)
         {
             publication.Name = publicationDto.Name;
-            publication.ImageUrl = publicationDto.ImageUrl;
         }
     }
 }

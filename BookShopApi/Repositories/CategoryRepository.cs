@@ -31,16 +31,11 @@ namespace BookShopApi.Repositories
 
         public async Task<Category> CreateCategoryAsync(CreateCategoryDto categoryDto)
         {
-            //var category = categoryDto.SetDataToCategoryFromCreateDto();
 
             var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
             var imageUrl = await _fileService.SaveFileAsync(categoryDto.ImageFile, allowedExtensions, "Category");
 
-            var category = new Category
-            {
-                Name = categoryDto.Name,
-                ImageUrl = imageUrl
-            };
+            var category = categoryDto.SetDataToCategoryFromCreateDto(imageUrl);
 
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
@@ -64,8 +59,7 @@ namespace BookShopApi.Repositories
                 category.ImageUrl = await _fileService.SaveFileAsync(categoryDto.ImageFile, allowedExtensions, "Category");
             }
 
-            //category.SetDataToCategoryFromUpdateDto(categoryDto);
-            category.Name = categoryDto.Name;
+            category.SetDataToCategoryFromUpdateDto(categoryDto);
 
             await _context.SaveChangesAsync();
             return category;

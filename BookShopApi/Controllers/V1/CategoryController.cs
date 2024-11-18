@@ -43,7 +43,7 @@ namespace BookShopApi.Controllers.V1
                 return BadRequest(ModelState);
 
             var createdCategory = await _categoryRepo.CreateCategoryAsync(categoryDto);
-            return Created($"api/category/{createdCategory.Id}", createdCategory.ToCategoryDto());
+            return Created($"api/category/{createdCategory.Id}", createdCategory.ToCategoryDto($"{Request.Scheme}://{Request.Host}{createdCategory.ImageUrl}"));
             
         }
 

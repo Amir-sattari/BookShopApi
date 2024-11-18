@@ -45,7 +45,7 @@ namespace BookShopApi.Services
         public void DeleteFile(string fileName, string folderName)
         {
             var sanitizedFileName = Path.GetFileName(fileName);
-            var filePath = Path.Combine(_imageRootPath, sanitizedFileName);
+            var filePath = Path.Combine(_imageRootPath, folderName, sanitizedFileName);
 
             if (File.Exists(filePath))
                 File.Delete(filePath);

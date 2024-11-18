@@ -594,9 +594,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "publicationDto",
-        "Type": "BookShopApi.Dtos.Publication.CreatePublicationDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -646,9 +651,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "publicationDto",
-        "Type": "BookShopApi.Dtos.Publication.UpdatePublicationDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       },
       {
         "Name": "id",

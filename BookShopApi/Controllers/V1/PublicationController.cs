@@ -21,7 +21,7 @@ namespace BookShopApi.Controllers.V1
         public async Task<ActionResult<IEnumerable<Publication>>> GetAllPublicationsAsync()
         {
             var publications = await _publicationRepo.GetAllPublicationsAsync();
-            var publicationsDto = publications.Select(p => p.ToPublicationDto()).ToList();
+            var publicationsDto = publications.Select(p => p.ToPublicationDto($"{Request.Scheme}://{Request.Host}{p.ImageUrl}")).ToList();
             return Ok(publicationsDto);
         }
 
@@ -33,22 +33,22 @@ namespace BookShopApi.Controllers.V1
             if (publication == null)
                 return NotFound($"The publication with Id: {id}, Not found.");
 
-            return Ok(publication.ToPublicationDto());
+            return Ok(publication.ToPublicationDto($"{Request.Scheme}://{Request.Host}{publication.ImageUrl}"));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Publication>> CreatePublicationAsync([FromBody] CreatePublicationDto publicationDto)
+        public async Task<ActionResult<Publication>> CreatePublicationAsync([FromForm] CreatePublicationDto publicationDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var createdPublication = await _publicationRepo.CreatePublicationAsync(publicationDto);
-            return Created($"api/publication/{createdPublication.Id}", createdPublication.ToPublicationDto());
+            return Created($"api/publication/{createdPublication.Id}", createdPublication.ToPublicationDto($"{Request.Scheme}://{Request.Host}{createdPublication.ImageUrl}"));
         }
 
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdatePublicationAsync([FromBody] UpdatePublicationDto publicationDto, [FromRoute] int id)
+        public async Task<IActionResult> UpdatePublicationAsync([FromForm] UpdatePublicationDto publicationDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
