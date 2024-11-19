@@ -28,6 +28,15 @@ namespace BookShopApi.Repositories
             return await _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).FirstOrDefaultAsync(b => b.Id == id);
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByCategoryId(int categoryId)
+        {
+            if (!await IsCategoryExist(categoryId))
+                throw new ArgumentException("Category with the specified ID does not exist.");
+
+            return await _context.Books.Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId))
+                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category).ToListAsync();
+        }
+
         public async Task<Book> CreateBookAsync(CreateBookDto bookDto)
         {
             await ValidateBookDependenciesAsync(bookDto);
@@ -120,6 +129,11 @@ namespace BookShopApi.Repositories
 
             if (!await _context.CoverTypes.AnyAsync(c => c.Id == dto.CoverTypeId && !c.IsDeleted))
                 throw new ArgumentException("Invalid or deleted CoverTypeId");
+        }
+
+        private async Task<bool> IsCategoryExist(int id)
+        {
+            return await _context.Categories.AnyAsync(c => c.Id == id);
         }
     }
 }

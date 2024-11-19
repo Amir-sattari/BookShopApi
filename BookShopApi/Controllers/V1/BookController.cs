@@ -25,7 +25,7 @@ namespace BookShopApi.Controllers.V1
             return Ok(booksDto);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("GetBookById/{id:int}")]
         public async Task<ActionResult<Book>> GetBookByIdAsync([FromRoute] int id)
         {
             var book = await _bookRepo.GetBookByIdAsync(id);
@@ -34,6 +34,29 @@ namespace BookShopApi.Controllers.V1
                 return NotFound(new { ErrorMessage = $"The book with Id: {id}, Not found." });
 
             return Ok(book.ToBookDto($"{Request.Scheme}://{Request.Host}{book.ImageUrl}"));
+        }
+
+        [HttpGet("GetBooksByCategoryId/{categoryId:int}")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetBooksByCategoryId([FromRoute] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest("Invalid category ID.");
+
+            try
+            {
+                var books = await _bookRepo.GetBooksByCategoryId(categoryId);
+
+                if(books == null | !books.Any())
+                    return BadRequest("No books found for the specified category.");
+
+                var booksDto = books.Select(b => b.ToBookDto($"{Request.Scheme}://{Request.Host}{b.ImageUrl}")).ToList();
+                return Ok(booksDto);
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(e.Message);
+            }
+
         }
 
         [HttpPost]

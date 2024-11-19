@@ -7,6 +7,7 @@ namespace BookShopApi.Interfaces
     {
         Task<IEnumerable<Book>> GetAllBooksAsync();
         Task<Book?> GetBookByIdAsync(int id);
+        Task<IEnumerable<Book>> GetBooksByCategoryId(int id);
         Task<Book> CreateBookAsync(CreateBookDto book);
         Task<Book?> UpdateBookAsync(UpdateBookDto bookDto, int id);
         Task<Book?> DeleteBookAsync(int id);
