@@ -21,6 +21,7 @@ namespace BookShopApi.Dtos.Book
         public int PublicationId { get; set; }
         public int BookSizeId { get; set; }
         public int CoverTypeId { get; set; }
+        public DateTime CreatedAt { get; set; }
 
     }
 }

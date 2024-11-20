@@ -27,6 +27,7 @@ namespace BookShopApi.Mappers
                 PublicationId = book.PublicationId,
                 BookSizeId = book.BookSizeId,
                 CoverTypeId = book.CoverTypeId,
+                CreatedAt = book.CreatedAt,
             };
         }
 
