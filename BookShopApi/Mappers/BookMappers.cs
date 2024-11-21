@@ -23,6 +23,7 @@ namespace BookShopApi.Mappers
                 {
                     Id = bc.Category.Id,
                     Name = bc.Category.Name,
+                    ImageUrl = bc.Category.ImageUrl,
                 }).ToList(),
                 PublicationId = book.PublicationId,
                 BookSizeId = book.BookSizeId,
@@ -81,7 +82,7 @@ namespace BookShopApi.Mappers
                 PrintSeries = bookDto.PrintSeries,
                 PublicationId = bookDto.PublicationId,
                 BookSizeId = bookDto.BookSizeId,
-                CoverTypeId = bookDto.CoverTypeId 
+                CoverTypeId = bookDto.CoverTypeId
             };
         }
     }

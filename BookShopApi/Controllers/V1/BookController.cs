@@ -46,8 +46,8 @@ namespace BookShopApi.Controllers.V1
             {
                 var books = await _bookRepo.GetBooksByCategoryId(categoryId);
 
-                if(books == null | !books.Any())
-                    return BadRequest("No books found for the specified category.");
+                if (books == null | !books.Any())
+                    return NotFound("No books found for the specified category.");
 
                 var booksDto = books.Select(b => b.ToBookDto($"{Request.Scheme}://{Request.Host}{b.ImageUrl}")).ToList();
                 return Ok(booksDto);
