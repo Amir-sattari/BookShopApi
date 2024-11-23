@@ -142,3 +142,5 @@ D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\runtimes\win\lib
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\obj\Debug\net8.0\BookShopApi.sourcelink.json
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\BookShopApi.staticwebassets.runtime.json
+D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
