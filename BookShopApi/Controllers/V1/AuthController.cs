@@ -40,7 +40,7 @@ namespace BookShopApi.Controllers.V1
 
             try
             {
-                var token = await _authService.VerifyOtpAsync(verifyOtpDto);
+                var token = await _authService.ValidateRegisterAsync(verifyOtpDto);
                 return Ok(new { Message = "Verified Successfully", token });
             }
             catch (Exception e)

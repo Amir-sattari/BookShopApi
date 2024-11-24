@@ -52,7 +52,7 @@ namespace BookShopApi.Services
             };
         }
 
-        public async Task<string> VerifyOtpAsync(VerifyOtpDto dto)
+        public async Task<string> ValidateRegisterAsync(VerifyOtpDto dto)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == dto.PhoneNumber);
             if (user == null)
