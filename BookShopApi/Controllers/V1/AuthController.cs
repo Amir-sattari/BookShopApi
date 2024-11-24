@@ -32,7 +32,7 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpPost("verify-otp")]
+        [HttpPost("ValidateRegister")]
         public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpDto verifyOtpDto)
         {
             if (!ModelState.IsValid)
@@ -40,8 +40,8 @@ namespace BookShopApi.Controllers.V1
 
             try
             {
-                await _authService.VerifyOtpAsync(verifyOtpDto);
-                return Ok(new { Message = "Verified Successfully" });
+                var token = await _authService.VerifyOtpAsync(verifyOtpDto);
+                return Ok(new { Message = "Verified Successfully", token });
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<LoginResponseDto>> LoginUserAsync([FromBody] LoginDto loginDto)
         {
             if (!ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpPost("validate-login")]
+        [HttpPost("validateLogin")]
         public async Task<IActionResult> ValidateLogin([FromBody] VerifyOtpDto verifyOtpDto)
         {
             if (!ModelState.IsValid)

@@ -20,6 +20,10 @@ namespace BookShopApi.Services
 
         public async Task<RegisterResponseDto> RegisterUserAsync(RegisterDto dto)
         {
+            var existingPhoneNumber = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == dto.PhoneNumber);
+            if (existingPhoneNumber != null)
+                throw new InvalidOperationException($"User Registration Failed: phone number is exist");
+
             var user = new AppUser
             {
                 UserName = dto.Username,
@@ -48,7 +52,7 @@ namespace BookShopApi.Services
             };
         }
 
-        public async Task VerifyOtpAsync(VerifyOtpDto dto)
+        public async Task<string> VerifyOtpAsync(VerifyOtpDto dto)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == dto.PhoneNumber);
             if (user == null)
@@ -65,6 +69,8 @@ namespace BookShopApi.Services
             user.OPTExpiry = null;
 
             await _userManager.UpdateAsync(user);
+
+            return _tokenService.CreateToken(user);
         }
 
         public async Task<LoginResponseDto> SendLoginOtpAsync(LoginDto dto)

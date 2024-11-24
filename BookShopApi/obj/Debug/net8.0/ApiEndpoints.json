@@ -2,7 +2,7 @@
   {
     "ContainingType": "BookShopApi.Controllers.V1.AuthController",
     "Method": "LoginUserAsync",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -54,7 +54,7 @@
   {
     "ContainingType": "BookShopApi.Controllers.V1.AuthController",
     "Method": "ValidateLogin",
-    "RelativePath": "api/Auth/validate-login",
+    "RelativePath": "api/Auth/validateLogin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -70,7 +70,7 @@
   {
     "ContainingType": "BookShopApi.Controllers.V1.AuthController",
     "Method": "VerifyOtp",
-    "RelativePath": "api/Auth/verify-otp",
+    "RelativePath": "api/Auth/ValidateRegister",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
