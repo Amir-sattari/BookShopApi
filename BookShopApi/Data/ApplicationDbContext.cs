@@ -31,6 +31,9 @@ namespace BookShopApi.Data
             modelBuilder.Entity<BookCategory>(x => x.HasKey(b => new { b.BookId, b.CategoryId}));
             modelBuilder.Entity<BookCategory>().HasQueryFilter(b => !b.Category.IsDeleted && !b.Book.IsDeleted);
 
+            modelBuilder.Entity<Bookmark>(x => x.HasKey(bk => new { bk.BookId, bk.UserId }));
+            modelBuilder.Entity<Bookmark>().HasQueryFilter(bk => !bk.Book.IsDeleted && !bk.User.IsDeleted);
+
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
                 .WithMany(p => p.Books)
@@ -46,6 +49,16 @@ namespace BookShopApi.Data
                 .HasOne(b => b.Category)
                 .WithMany(b => b.BookCategories)
                 .HasForeignKey(b => b.CategoryId);
+
+            modelBuilder.Entity<Bookmark>()
+                .HasOne(bk => bk.Book)
+                .WithMany(b => b.Bookmarks)
+                .HasForeignKey(bk => bk.BookId);
+
+            modelBuilder.Entity<Bookmark>()
+                .HasOne(bk => bk.User)
+                .WithMany(u => u.Bookmarks)
+                .HasForeignKey(bk => bk.UserId);
         }
 
         public override int SaveChanges()
@@ -90,5 +103,6 @@ namespace BookShopApi.Data
         public DbSet<CoverType> CoverTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
+        public DbSet<Bookmark> Bookmarks { get; set; }
     }
 }

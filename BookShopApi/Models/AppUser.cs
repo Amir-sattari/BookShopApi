@@ -13,5 +13,8 @@ namespace BookShopApi.Models
         public DateTime UpdatedAt { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
+
+        // Navigation Property
+        public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
     }
 }

@@ -62,6 +62,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IBookmarkRepository, BookmarkRepository>();
 
 builder.Services.Configure<ImageSettings>(builder.Configuration.GetSection("ImageSettings"));
 builder.WebHost.ConfigureKestrel(option => option.Limits.MaxRequestBodySize = 10 * 1024 * 1024);

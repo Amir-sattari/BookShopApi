@@ -339,6 +339,90 @@
     ]
   },
   {
+    "ContainingType": "BookShopApi.Controllers.V1.BookmarkController",
+    "Method": "AddBookmarkAsync",
+    "RelativePath": "api/Bookmark",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookmarkDto",
+        "Type": "BookShopApi.Dtos.Bookmark.CreateBookmarkDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.BookmarkController",
+    "Method": "DeleteBookmarkedBookByUserIdAsync",
+    "RelativePath": "api/Bookmark/DeleteBookmarkByUserId/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.BookmarkController",
+    "Method": "GetBookmarkedBookByBookIdAsync",
+    "RelativePath": "api/Bookmark/GetBookmarksByBookId/{bookId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookShopApi.Models.Book",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.BookmarkController",
+    "Method": "GetBookmarkedBooksByBookIdAsync",
+    "RelativePath": "api/Bookmark/GetBookmarksByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BookShopApi.Models.Book, BookShopApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BookShopApi.Controllers.V1.BookSizeController",
     "Method": "GetAllBookSizeAsync",
     "RelativePath": "api/BookSize",
