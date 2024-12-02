@@ -31,6 +31,7 @@ namespace BookShopApi.Models
         public CoverType CoverType { get; set; }
         public ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
         public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; } = new List<ShoppingCart>();
 
     }
 }

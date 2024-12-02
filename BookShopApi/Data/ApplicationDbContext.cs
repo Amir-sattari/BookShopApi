@@ -17,8 +17,8 @@ namespace BookShopApi.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
-            modelBuilder.Entity<Book>()
-                .HasQueryFilter(b => !b.IsDeleted && !b.Publication.IsDeleted && !b.BookSize.IsDeleted && !b.CoverType.IsDeleted);
+
+            modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted);
 
             modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);
 
@@ -34,31 +34,46 @@ namespace BookShopApi.Data
             modelBuilder.Entity<Bookmark>(x => x.HasKey(bk => new { bk.BookId, bk.UserId }));
             modelBuilder.Entity<Bookmark>().HasQueryFilter(bk => !bk.Book.IsDeleted && !bk.User.IsDeleted);
 
+            modelBuilder.Entity<ShoppingCart>(x => x.HasKey(s => new { s.UserId, s.BookId }));
+            modelBuilder.Entity<ShoppingCart>().HasQueryFilter(s => !s.User.IsDeleted && !s.Book.IsDeleted);
+
+
+
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
                 .WithMany(p => p.Books)
                 .HasForeignKey(b => b.PublicationId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BookCategory>()
-                .HasOne(b => b.Book)
-                .WithMany(b => b.BookCategories)
-                .HasForeignKey(b => b.BookId);
+            //modelBuilder.Entity<BookCategory>()
+            //    .HasOne(b => b.Book)
+            //    .WithMany(b => b.BookCategories)
+            //    .HasForeignKey(b => b.BookId);
 
-            modelBuilder.Entity<BookCategory>()
-                .HasOne(b => b.Category)
-                .WithMany(b => b.BookCategories)
-                .HasForeignKey(b => b.CategoryId);
+            //modelBuilder.Entity<BookCategory>()
+            //    .HasOne(b => b.Category)
+            //    .WithMany(b => b.BookCategories)
+            //    .HasForeignKey(b => b.CategoryId);
 
-            modelBuilder.Entity<Bookmark>()
-                .HasOne(bk => bk.Book)
-                .WithMany(b => b.Bookmarks)
-                .HasForeignKey(bk => bk.BookId);
+            //modelBuilder.Entity<Bookmark>()
+            //    .HasOne(bk => bk.Book)
+            //    .WithMany(b => b.Bookmarks)
+            //    .HasForeignKey(bk => bk.BookId);
 
-            modelBuilder.Entity<Bookmark>()
-                .HasOne(bk => bk.User)
-                .WithMany(u => u.Bookmarks)
-                .HasForeignKey(bk => bk.UserId);
+            //modelBuilder.Entity<Bookmark>()
+            //    .HasOne(bk => bk.User)
+            //    .WithMany(u => u.Bookmarks)
+            //    .HasForeignKey(bk => bk.UserId);
+
+            //modelBuilder.Entity<ShoppingCart>()
+            //    .HasOne(s => s.User)
+            //    .WithMany(u => u.ShoppingCarts)
+            //    .HasForeignKey(s => s.UserId);
+
+            //modelBuilder.Entity<ShoppingCart>()
+            //    .HasOne(s => s.Book)
+            //    .WithMany(b => b.ShoppingCarts)
+            //    .HasForeignKey(s => s.BookId);
         }
 
         public override int SaveChanges()
@@ -104,5 +119,6 @@ namespace BookShopApi.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

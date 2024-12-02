@@ -16,5 +16,6 @@ namespace BookShopApi.Models
 
         // Navigation Property
         public ICollection<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; } = new List<ShoppingCart>();
     }
 }
