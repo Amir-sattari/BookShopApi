@@ -37,12 +37,35 @@ namespace BookShopApi.Data
             modelBuilder.Entity<ShoppingCart>(x => x.HasKey(s => new { s.UserId, s.BookId }));
             modelBuilder.Entity<ShoppingCart>().HasQueryFilter(s => !s.User.IsDeleted && !s.Book.IsDeleted);
 
+            modelBuilder.Entity<ShippingAddress>().HasQueryFilter(sh => !sh.Province.IsDeleted && !sh.City.IsDeleted);
+
+            modelBuilder.Entity<Province>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<City>().HasQueryFilter(c => !c.IsDeleted && !c.Province.IsDeleted);
+
 
 
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Publication)
                 .WithMany(p => p.Books)
                 .HasForeignKey(b => b.PublicationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<ShippingAddress>()
+                .HasOne(sh => sh.Province)
+                .WithMany()
+                .HasForeignKey(sh => sh.ProvinceId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<ShippingAddress>()
+                .HasOne(sh => sh.City)
+                .WithMany()
+                .HasForeignKey(sh => sh.CityId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<City>()
+                .HasOne(c => c.Province)
+                .WithMany(p => p.Cities)
+                .HasForeignKey(c => c.ProvinceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             //modelBuilder.Entity<BookCategory>()
@@ -120,5 +143,8 @@ namespace BookShopApi.Data
         public DbSet<BookCategory> BookCategories { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShippingAddress> ShippingAddresses { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }

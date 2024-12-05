@@ -15,13 +15,7 @@ D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Entity
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
