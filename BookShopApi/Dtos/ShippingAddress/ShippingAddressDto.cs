@@ -1,6 +1,6 @@
-﻿namespace BookShopApi.Models
+﻿namespace BookShopApi.Dtos.ShippingAddress
 {
-    public class ShippingAddress
+    public class ShippingAddressDto
     {
         public int Id { get; set; }
         public string UserId { get; set; } = string.Empty;
@@ -10,11 +10,5 @@
         public int CityId { get; set; }
         public string Address { get; set; } = string.Empty;
         public string PostCode { get; set; } = string.Empty;
-
-        // Navigation Properties
-        public AppUser User { get; set; }
-        public Province Province { get; set; }
-        public City City { get; set; }
-
     }
 }

@@ -27,5 +27,15 @@ namespace BookShopApi.Mappers
                 Quantity = 1
             };
         }
+        
+        public static ShoppingCart ToShoppingCartFromCreateMultipleDto(this CreateMultipleShoppingCartItemsDto cartDto)
+        {
+            return new ShoppingCart
+            {
+                UserId = cartDto.UserId,
+                BookId = cartDto.BookId,
+                Quantity = cartDto.Quantity,
+            };
+        }
     }
 }

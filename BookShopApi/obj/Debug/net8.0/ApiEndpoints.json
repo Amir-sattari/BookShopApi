@@ -1123,6 +1123,131 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookShopApi.Controllers.V1.ShippingAddressController",
+    "Method": "CreateShippingAddressAsync",
+    "RelativePath": "api/ShippingAddress/CreateShippingAddress",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addressDto",
+        "Type": "BookShopApi.Dtos.ShippingAddress.CreateShippingAddressDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookShopApi.Models.ShippingAddress",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.ShippingAddressController",
+    "Method": "DeleteShippingAddressAsync",
+    "RelativePath": "api/ShippingAddress/DeleteShippingAddress/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.ShippingAddressController",
+    "Method": "GetAllShippingAddressesAsync",
+    "RelativePath": "api/ShippingAddress/GetAllShippingAddresses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BookShopApi.Models.ShippingAddress, BookShopApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.ShippingAddressController",
+    "Method": "GetShippingAddressByUserIdAsync",
+    "RelativePath": "api/ShippingAddress/GetShippingAddressByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BookShopApi.Models.ShippingAddress",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.ShippingAddressController",
+    "Method": "UpdateShippingAddressAsync",
+    "RelativePath": "api/ShippingAddress/UpdateShippingAddress/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addressDto",
+        "Type": "BookShopApi.Dtos.ShippingAddress.UpdateShippingAddressDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BookShopApi.Controllers.V1.ShoppingCartController",
+    "Method": "AddMultipleItemsToCartAsync",
+    "RelativePath": "api/ShoppingCart/AddMultipleItemsToCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartDto",
+        "Type": "BookShopApi.Dtos.ShoppingCart.CreateMultipleShoppingCartItemsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BookShopApi.Controllers.V1.ShoppingCartController",
     "Method": "AddToCartAsync",
     "RelativePath": "api/ShoppingCart/AddToCart",

@@ -35,6 +35,16 @@ namespace BookShopApi.Controllers.V1
             return Ok(new { Message = "Book added to cart." });
         }
 
+        [HttpPost("AddMultipleItemsToCart")]
+        public async Task<IActionResult> AddMultipleItemsToCartAsync([FromBody] CreateMultipleShoppingCartItemsDto cartDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _shoppingCartRepo.AddMultipleItemsToCartAsync(cartDto);
+            return Ok(new { Message = "Book added to cart." });
+        }
+
         [HttpPut("IncrementCartItemQuantity")]
         public async Task<ActionResult<ShoppingCart>> IncrementCartItemQuantityAsync([FromBody] UpdateShoppingCartDto cartDto)
         {

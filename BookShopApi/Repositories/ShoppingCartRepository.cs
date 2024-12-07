@@ -34,6 +34,24 @@ namespace BookShopApi.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task AddMultipleItemsToCartAsync(CreateMultipleShoppingCartItemsDto cartDto)
+        {
+            var existingItem = await _context.ShoppingCarts
+                .FirstOrDefaultAsync(item => item.UserId == cartDto.UserId && item.BookId == cartDto.BookId);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += cartDto.Quantity;
+            }
+            else
+            {
+                var newCartItem = cartDto.ToShoppingCartFromCreateMultipleDto(); 
+                await _context.ShoppingCarts.AddAsync(newCartItem);
+            }
+
+            await _context.SaveChangesAsync();
+        }
         public async Task<ShoppingCart> IncrementCartItemQuantityAsync(UpdateShoppingCartDto cartDto)
         {
             var cartItem = await _context.ShoppingCarts.Where(s => s.UserId == cartDto.UserId && s.BookId == cartDto.BookId).Include(s => s.Book)
