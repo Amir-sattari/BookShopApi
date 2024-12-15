@@ -18,7 +18,7 @@ namespace BookShopApi.Repositories
 
         public async Task<ICollection<ShippingAddress>> GetAllShippingAddressesAsync()
         {
-            return await _context.ShippingAddresses.ToListAsync();
+            return await _context.ShippingAddresses.Include(sh => sh.Province).Include(sh => sh.City).ToListAsync();
         }
 
         public async Task<ShippingAddress?> GetShippingAddressByUserIdAsync(string userId)
@@ -28,7 +28,7 @@ namespace BookShopApi.Repositories
             if (!isUserIdExist)
                 throw new InvalidOperationException("The UserId Is Invalid or Doesn't Exist.");
 
-            return await _context.ShippingAddresses.FirstOrDefaultAsync(sh => sh.UserId == userId);
+            return await _context.ShippingAddresses.Include(sh => sh.Province).Include(sh => sh.City).FirstOrDefaultAsync(sh => sh.UserId == userId);
         }
 
         public async Task<ShippingAddress> CreateShippingAddressAsync(CreateShippingAddressDto addressDto)

@@ -138,3 +138,7 @@ D:\dev\csharp-projects\BookShopApi\BookShopApi\obj\Debug\net8.0\BookShopApi.sour
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\BookShopApi.staticwebassets.runtime.json
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\dev\csharp-projects\BookShopApi\BookShopApi\bin\Debug\net8.0\BookShopApi.staticwebassets.endpoints.json
+D:\dev\csharp-projects\BookShopApi\BookShopApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\dev\csharp-projects\BookShopApi\BookShopApi\obj\Debug\net8.0\staticwebassets\msbuild.BookShopApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\dev\csharp-projects\BookShopApi\BookShopApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

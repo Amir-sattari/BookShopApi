@@ -68,6 +68,7 @@ builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<IShippingAddressRepository, ShippingAddressRepository>();
+builder.Services.AddScoped<IShippingMethodRepository, ShippingMethodRepository>();
 
 builder.Services.Configure<ImageSettings>(builder.Configuration.GetSection("ImageSettings"));
 builder.WebHost.ConfigureKestrel(option => option.Limits.MaxRequestBodySize = 10 * 1024 * 1024);

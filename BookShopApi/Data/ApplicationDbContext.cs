@@ -42,6 +42,7 @@ namespace BookShopApi.Data
             modelBuilder.Entity<Province>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<City>().HasQueryFilter(c => !c.IsDeleted && !c.Province.IsDeleted);
 
+            modelBuilder.Entity<ShippingMethod>().Property(sh => sh.Cost).HasPrecision(18, 2);
 
 
             modelBuilder.Entity<Book>()
@@ -67,36 +68,6 @@ namespace BookShopApi.Data
                 .WithMany(p => p.Cities)
                 .HasForeignKey(c => c.ProvinceId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            //modelBuilder.Entity<BookCategory>()
-            //    .HasOne(b => b.Book)
-            //    .WithMany(b => b.BookCategories)
-            //    .HasForeignKey(b => b.BookId);
-
-            //modelBuilder.Entity<BookCategory>()
-            //    .HasOne(b => b.Category)
-            //    .WithMany(b => b.BookCategories)
-            //    .HasForeignKey(b => b.CategoryId);
-
-            //modelBuilder.Entity<Bookmark>()
-            //    .HasOne(bk => bk.Book)
-            //    .WithMany(b => b.Bookmarks)
-            //    .HasForeignKey(bk => bk.BookId);
-
-            //modelBuilder.Entity<Bookmark>()
-            //    .HasOne(bk => bk.User)
-            //    .WithMany(u => u.Bookmarks)
-            //    .HasForeignKey(bk => bk.UserId);
-
-            //modelBuilder.Entity<ShoppingCart>()
-            //    .HasOne(s => s.User)
-            //    .WithMany(u => u.ShoppingCarts)
-            //    .HasForeignKey(s => s.UserId);
-
-            //modelBuilder.Entity<ShoppingCart>()
-            //    .HasOne(s => s.Book)
-            //    .WithMany(b => b.ShoppingCarts)
-            //    .HasForeignKey(s => s.BookId);
         }
 
         public override int SaveChanges()
@@ -146,5 +117,6 @@ namespace BookShopApi.Data
         public DbSet<ShippingAddress> ShippingAddresses { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<ShippingMethod> ShippingMethods { get; set; }
     }
 }

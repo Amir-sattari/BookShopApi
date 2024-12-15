@@ -1,451 +1,19 @@
 {
   "Version": 1,
-  "Hash": "YlSwJFzqaQlUZrMiZiAT29RBX2l2qMY1YhVn/kqAVsM=",
-  "Source": "BookShopApi",
-  "BasePath": "_content/BookShopApi",
-  "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [
-    {
-      "Name": "BookShopApi\\wwwroot",
-      "Source": "BookShopApi",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "Pattern": "**"
-    }
-  ],
-  "Assets": [
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "sub4qipsb4",
-      "Integrity": "BIf/ieeExQdSnC2nPU3UBOJY4ey1RhG4sgBZZjYGU1U=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "g84bri05t3",
-      "Integrity": "0FLU1Buz5EehXghNeS1GgN3b7ZAjO+EbdEdsCl9zO/Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\82709f77-ae48-40fd-896c-c641bbb395a0.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "0x5ue3qjwi",
-      "Integrity": "jGx1fVfXUFP89ItUO62fHOp3ILKlbybWph70D1Znj1A=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "p18m1fio59",
-      "Integrity": "PS/3kYSNIO8TzNV6SRRUTTzJKCPkVl2sjg/ROtZtAwQ=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\a261063c-691e-4641-a5b4-b391e5b40a49.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "d5lkwat7hj",
-      "Integrity": "EcCitp+e5DJWoaVpIUnpdBWoUpgcpTnKRsijudYclUg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "8eakqm0lfe",
-      "Integrity": "YNyK9lsapyuszNt+52FArBV9NlwT52fT7a/eRslu9h8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "nnqkp7okc5",
-      "Integrity": "DYdvbu4eLFrRSFMUYzPW/PlWCEJ0Nsz6Apmy0OtpZxc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Book\\ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "wnl11wfqsn",
-      "Integrity": "FEt0aU5c60/Vc5upAO6o1u6VDTd+/mG6wNna0r/o3dA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\35bd38c3-452a-4b96-903d-b07917deb9bf.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "bmiyim8jjv",
-      "Integrity": "PcNJEhsjuiOzBYl8b6hAT9TUpcLB05bidZwdFFTDUTk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\35bd38c3-452a-4b96-903d-b07917deb9bf.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "p8n4g7c49o",
-      "Integrity": "qZr+Q67KHw5qPS4hFoiguwCBDo6F0WP0n8zyu+SWnWA=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\5d3ad0e2-f3c1-40a7-ac37-543593331250.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\71f5f770-2380-4069-9b18-93e2b0880d98.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "nqvubce2wo",
-      "Integrity": "L/ee/Q+eCFBTyn0U1zMKBY1Yyb4SKeCEFfCM17tJbzE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\71f5f770-2380-4069-9b18-93e2b0880d98.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "8s03wetwzk",
-      "Integrity": "uA57y6HnZwpE69GmMT1XSylUB0ecyDKjw3GWuOa/pWY=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\72288d9c-cf90-484b-9c09-b28eeb4e7d17.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\a3c9515b-e949-474c-84eb-fea5926ed765.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "okneam8eqs",
-      "Integrity": "KC9RJC17Y0/JKSn8DYDBAu5kND7jb07sA6iWtogZTog=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\a3c9515b-e949-474c-84eb-fea5926ed765.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "4vffd2vsra",
-      "Integrity": "8Jy9LXMMXKazVVelervkblH55V6ExqI0UXMfJiA+86Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\b82748c7-eb68-475d-94b5-11c7ee8f72cd.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "f1li1bzit3",
-      "Integrity": "/WdLo7qLFui1a7h8iL3zSpslLVeblHV+tptkxeslRq8=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "utd9657mg5",
-      "Integrity": "Qpgc0v1Ksvtj6BoW9Jfn1eU58su2iAN/dHxPMXk/7uU=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Category\\bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "n5men5xf3a",
-      "Integrity": "VR0RqHWtDhuG4Bq5N+xZTPytty/UF9oYfzFqS8Jvgws=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Publication\\0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\23605bbf-215e-48c3-b5bc-7245e10376db.png",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db#[.{fingerprint}]?.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "tpli9bi2wz",
-      "Integrity": "cZOQiLdwDTQIA4nwzqOtgAySU3HGYcp2F/ypYlqPQ/k=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Publication\\23605bbf-215e-48c3-b5bc-7245e10376db.png"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "s2fkvlnkgc",
-      "Integrity": "rBPAE3eiVum9f5jVpPU7B+B0bpiP40owvXUw7I1+xT4=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Publication\\98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg"
-    },
-    {
-      "Identity": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
-      "SourceId": "BookShopApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\",
-      "BasePath": "_content/BookShopApi",
-      "RelativePath": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a#[.{fingerprint}]?.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "rxl74dq7f5",
-      "Integrity": "z6Ik3/2O03UXDOhnd+nNQJLyvydfgcsbyebdFxPkEPg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Publication\\9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg"
-    }
-  ],
   "Endpoints": [
     {
       "Route": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
+      "AssetFile": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -462,10 +30,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:21:12 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -477,12 +41,16 @@
     },
     {
       "Route": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.sub4qipsb4.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
+      "AssetFile": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -499,10 +67,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:21:12 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -511,23 +75,27 @@
           "Value": "sub4qipsb4"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-BIf/ieeExQdSnC2nPU3UBOJY4ey1RhG4sgBZZjYGU1U="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/0d5155a1-a015-41f2-90c8-62fe68b5bb6c.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.g84bri05t3.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
+      "AssetFile": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -544,10 +112,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:09:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -556,23 +120,27 @@
           "Value": "g84bri05t3"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-0FLU1Buz5EehXghNeS1GgN3b7ZAjO+EbdEdsCl9zO/Y="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
+      "AssetFile": "Images/Book/82709f77-ae48-40fd-896c-c641bbb395a0.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -589,10 +157,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:09:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -604,12 +168,16 @@
     },
     {
       "Route": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.0x5ue3qjwi.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
+      "AssetFile": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -626,10 +194,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:08:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -638,23 +202,27 @@
           "Value": "0x5ue3qjwi"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-jGx1fVfXUFP89ItUO62fHOp3ILKlbybWph70D1Znj1A="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
+      "AssetFile": "Images/Book/88a8a7dd-e715-4bd2-b1cc-c6b49caf0ac5.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -671,10 +239,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:08:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -686,12 +250,16 @@
     },
     {
       "Route": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
+      "AssetFile": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -708,10 +276,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:05:09 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -723,12 +287,16 @@
     },
     {
       "Route": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.p18m1fio59.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
+      "AssetFile": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -745,10 +313,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:05:09 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -757,23 +321,27 @@
           "Value": "p18m1fio59"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-PS/3kYSNIO8TzNV6SRRUTTzJKCPkVl2sjg/ROtZtAwQ="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/a261063c-691e-4641-a5b4-b391e5b40a49.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.d5lkwat7hj.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
+      "AssetFile": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -790,10 +358,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:19:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -802,23 +366,27 @@
           "Value": "d5lkwat7hj"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-EcCitp+e5DJWoaVpIUnpdBWoUpgcpTnKRsijudYclUg="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
+      "AssetFile": "Images/Book/a909b3ae-b81d-43e6-9125-b7992262bc7f.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -835,10 +403,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:19:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -850,12 +414,16 @@
     },
     {
       "Route": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.8eakqm0lfe.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
+      "AssetFile": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -872,10 +440,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:06:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -884,23 +448,27 @@
           "Value": "8eakqm0lfe"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-YNyK9lsapyuszNt+52FArBV9NlwT52fT7a/eRslu9h8="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg"
         }
       ]
     },
     {
       "Route": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
+      "AssetFile": "Images/Book/ed6f2380-50de-48bc-87e1-c2aa18f7948e.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -917,10 +485,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:06:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -932,12 +496,16 @@
     },
     {
       "Route": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
+      "AssetFile": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -954,10 +522,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:17:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -969,12 +533,16 @@
     },
     {
       "Route": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.nnqkp7okc5.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Book\\ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
+      "AssetFile": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -991,10 +559,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 16:17:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1003,23 +567,27 @@
           "Value": "nnqkp7okc5"
         },
         {
-          "Name": "label",
-          "Value": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-DYdvbu4eLFrRSFMUYzPW/PlWCEJ0Nsz6Apmy0OtpZxc="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Book/ff0dac1d-8e5c-406b-89e6-e697afcd74b9.jpg"
         }
       ]
     },
     {
       "Route": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
+      "AssetFile": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1036,10 +604,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:37 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1051,12 +615,16 @@
     },
     {
       "Route": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.wnl11wfqsn.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
+      "AssetFile": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1073,10 +641,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:37 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1085,23 +649,27 @@
           "Value": "wnl11wfqsn"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-FEt0aU5c60/Vc5upAO6o1u6VDTd+/mG6wNna0r/o3dA="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/00fd43b9-3b14-4a1f-b1f7-345a17f35b6a.png"
         }
       ]
     },
     {
       "Route": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.bmiyim8jjv.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\35bd38c3-452a-4b96-903d-b07917deb9bf.png",
+      "AssetFile": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1118,10 +686,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:16 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1130,23 +694,27 @@
           "Value": "bmiyim8jjv"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-PcNJEhsjuiOzBYl8b6hAT9TUpcLB05bidZwdFFTDUTk="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.png"
         }
       ]
     },
     {
       "Route": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\35bd38c3-452a-4b96-903d-b07917deb9bf.png",
+      "AssetFile": "Images/Category/35bd38c3-452a-4b96-903d-b07917deb9bf.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1163,10 +731,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:16 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1178,12 +742,16 @@
     },
     {
       "Route": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.p8n4g7c49o.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
+      "AssetFile": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1200,10 +768,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1212,23 +776,27 @@
           "Value": "p8n4g7c49o"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-qZr+Q67KHw5qPS4hFoiguwCBDo6F0WP0n8zyu+SWnWA="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.png"
         }
       ]
     },
     {
       "Route": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
+      "AssetFile": "Images/Category/5d3ad0e2-f3c1-40a7-ac37-543593331250.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1245,10 +813,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1260,12 +824,16 @@
     },
     {
       "Route": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.nqvubce2wo.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\71f5f770-2380-4069-9b18-93e2b0880d98.png",
+      "AssetFile": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1282,10 +850,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:26 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1294,23 +858,27 @@
           "Value": "nqvubce2wo"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-L/ee/Q+eCFBTyn0U1zMKBY1Yyb4SKeCEFfCM17tJbzE="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.png"
         }
       ]
     },
     {
       "Route": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\71f5f770-2380-4069-9b18-93e2b0880d98.png",
+      "AssetFile": "Images/Category/71f5f770-2380-4069-9b18-93e2b0880d98.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1327,10 +895,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:26 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1342,12 +906,16 @@
     },
     {
       "Route": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.8s03wetwzk.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
+      "AssetFile": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1364,10 +932,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1376,23 +940,27 @@
           "Value": "8s03wetwzk"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-uA57y6HnZwpE69GmMT1XSylUB0ecyDKjw3GWuOa/pWY="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.png"
         }
       ]
     },
     {
       "Route": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
+      "AssetFile": "Images/Category/72288d9c-cf90-484b-9c09-b28eeb4e7d17.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1409,10 +977,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1424,12 +988,16 @@
     },
     {
       "Route": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.okneam8eqs.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\a3c9515b-e949-474c-84eb-fea5926ed765.png",
+      "AssetFile": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1446,10 +1014,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:03 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1458,23 +1022,27 @@
           "Value": "okneam8eqs"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-KC9RJC17Y0/JKSn8DYDBAu5kND7jb07sA6iWtogZTog="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.png"
         }
       ]
     },
     {
       "Route": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\a3c9515b-e949-474c-84eb-fea5926ed765.png",
+      "AssetFile": "Images/Category/a3c9515b-e949-474c-84eb-fea5926ed765.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1491,10 +1059,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:03 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1506,12 +1070,16 @@
     },
     {
       "Route": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.4vffd2vsra.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
+      "AssetFile": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1528,10 +1096,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1540,23 +1104,27 @@
           "Value": "4vffd2vsra"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-8Jy9LXMMXKazVVelervkblH55V6ExqI0UXMfJiA+86Y="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.png"
         }
       ]
     },
     {
       "Route": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
+      "AssetFile": "Images/Category/b82748c7-eb68-475d-94b5-11c7ee8f72cd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1573,10 +1141,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:59:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1588,12 +1152,16 @@
     },
     {
       "Route": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.f1li1bzit3.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
+      "AssetFile": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1610,10 +1178,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1622,23 +1186,27 @@
           "Value": "f1li1bzit3"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-/WdLo7qLFui1a7h8iL3zSpslLVeblHV+tptkxeslRq8="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png"
         }
       ]
     },
     {
       "Route": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
+      "AssetFile": "Images/Category/bb65f88e-2f7b-4f07-a7a3-945bf8bb3e81.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1655,10 +1223,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:52 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1670,12 +1234,16 @@
     },
     {
       "Route": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
+      "AssetFile": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1692,10 +1260,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1707,12 +1271,16 @@
     },
     {
       "Route": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.utd9657mg5.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Category\\bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
+      "AssetFile": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1729,10 +1297,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:58:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1741,23 +1305,27 @@
           "Value": "utd9657mg5"
         },
         {
-          "Name": "label",
-          "Value": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-Qpgc0v1Ksvtj6BoW9Jfn1eU58su2iAN/dHxPMXk/7uU="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Category/bfc4ca0f-bd6d-429c-aaf7-b1c03e5e69d4.png"
         }
       ]
     },
     {
       "Route": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
+      "AssetFile": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1774,10 +1342,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1789,12 +1353,16 @@
     },
     {
       "Route": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.n5men5xf3a.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
+      "AssetFile": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1811,10 +1379,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1823,23 +1387,27 @@
           "Value": "n5men5xf3a"
         },
         {
-          "Name": "label",
-          "Value": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-VR0RqHWtDhuG4Bq5N+xZTPytty/UF9oYfzFqS8Jvgws="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Publication/0d58092d-eafb-42ea-bb35-7c62d6f6ea8a.jpg"
         }
       ]
     },
     {
       "Route": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\23605bbf-215e-48c3-b5bc-7245e10376db.png",
+      "AssetFile": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1856,10 +1424,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:55:40 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1871,12 +1435,16 @@
     },
     {
       "Route": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.tpli9bi2wz.png",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\23605bbf-215e-48c3-b5bc-7245e10376db.png",
+      "AssetFile": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1893,10 +1461,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:55:40 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1905,23 +1469,27 @@
           "Value": "tpli9bi2wz"
         },
         {
-          "Name": "label",
-          "Value": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.png"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-cZOQiLdwDTQIA4nwzqOtgAySU3HGYcp2F/ypYlqPQ/k="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Publication/23605bbf-215e-48c3-b5bc-7245e10376db.png"
         }
       ]
     },
     {
       "Route": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
+      "AssetFile": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -1938,10 +1506,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -1953,12 +1517,16 @@
     },
     {
       "Route": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.s2fkvlnkgc.jpg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
+      "AssetFile": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -1975,10 +1543,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -1987,23 +1551,27 @@
           "Value": "s2fkvlnkgc"
         },
         {
-          "Name": "label",
-          "Value": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-rBPAE3eiVum9f5jVpPU7B+B0bpiP40owvXUw7I1+xT4="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Publication/98caf6d2-5815-48ab-b887-9de0b49d6df8.jpg"
         }
       ]
     },
     {
       "Route": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
+      "AssetFile": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
         },
         {
           "Name": "Content-Length",
@@ -2020,10 +1588,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
@@ -2035,12 +1599,16 @@
     },
     {
       "Route": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.rxl74dq7f5.jpeg",
-      "AssetFile": "D:\\dev\\csharp-projects\\BookShopApi\\BookShopApi\\wwwroot\\Images\\Publication\\9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
+      "AssetFile": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
           "Name": "Accept-Ranges",
           "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Length",
@@ -2057,10 +1625,6 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 07 Dec 2024 15:57:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
@@ -2069,12 +1633,12 @@
           "Value": "rxl74dq7f5"
         },
         {
-          "Name": "label",
-          "Value": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg"
-        },
-        {
           "Name": "integrity",
           "Value": "sha256-z6Ik3/2O03UXDOhnd+nNQJLyvydfgcsbyebdFxPkEPg="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Publication/9ac8bef5-ccbc-4522-999c-a14ada03ae0a.jpeg"
         }
       ]
     }
