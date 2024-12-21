@@ -17,10 +17,10 @@ namespace BookShopApi.Controllers.V1
             _cityRepo = cityRepository;
         }
 
-        [HttpGet("GetCities")]
-        public async Task<ActionResult<IEnumerable<City>>> GetCitiesAsync()
+        [HttpGet("GetCities/{pageNumber:int}/{pageSize:int}")]
+        public async Task<ActionResult<IEnumerable<City>>> GetCitiesAsync([FromRoute] int pageNumber, [FromRoute] int pageSize = 10)
         {
-            var cities = await _cityRepo.GetcitiesAsync();
+            var cities = await _cityRepo.GetcitiesAsync(pageNumber, pageSize);
             var toCitiesDto = cities.Select(c => c.ToCityDto()).ToList();
             return Ok(toCitiesDto);
         }

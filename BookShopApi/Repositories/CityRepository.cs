@@ -16,9 +16,9 @@ namespace BookShopApi.Repositories
             _context = applicationDbContext;
         }
 
-        public async Task<ICollection<City>> GetcitiesAsync()
+        public async Task<ICollection<City>> GetcitiesAsync(int pageNumber, int pageSize)
         {
-            return await _context.Cities.ToListAsync();
+            return await _context.Cities.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
         public async Task<City?> GetCityByIdAsync(int id)

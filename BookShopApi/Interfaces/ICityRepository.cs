@@ -5,7 +5,7 @@ namespace BookShopApi.Interfaces
 {
     public interface ICityRepository
     {
-        Task<ICollection<City>> GetcitiesAsync();
+        Task<ICollection<City>> GetcitiesAsync(int pageNumber, int pageSize);
         Task<City?> GetCityByIdAsync(int id);
         Task<ICollection<City>> GetCitiesByProvinceId(int provinceId);
         Task<City> CreateCityAsync(CreateCityDto cityDto);
