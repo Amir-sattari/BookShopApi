@@ -26,17 +26,14 @@ namespace BookShopApi.Services
 
             var user = new AppUser
             {
-                UserName = dto.Username,
-                PhoneNumber = dto.PhoneNumber,
+                UserName = UserNameHelper.Combine(dto.FirstName, dto.LastName),
+                PhoneNumber = dto.PhoneNumber.Trim(),
                 IsVerified = false
             };
 
             var createdUser = await _userManager.CreateAsync(user);
             if (!createdUser.Succeeded)
-            {
-                var errors = string.Join(", ", createdUser.Errors.Select(e => e.Description));
-                throw new InvalidOperationException($"User Registration Failed: {errors}");
-            }
+                throw new InvalidOperationException(UserNameHelper.ToIdentityError(createdUser));
 
             string otp = OTPHelper.GenerateOTP();
             user.OTP = otp;

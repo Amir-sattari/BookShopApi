@@ -18,6 +18,8 @@ namespace BookShopApi.Data
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
 
+            modelBuilder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
+
             modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted);
 
             modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);

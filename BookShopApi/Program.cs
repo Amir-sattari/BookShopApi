@@ -26,6 +26,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
+    options.User.AllowedUserNameCharacters = null!;
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
@@ -63,6 +64,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookmarkRepository, BookmarkRepository>();
 builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();

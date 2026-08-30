@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace BookShopApi.Dtos.Auth
+namespace BookShopApi.Dtos.User
 {
-    public class RegisterDto
+    public class CreateUserDto
     {
         [Required]
         [MinLength(2)]
@@ -13,6 +13,9 @@ namespace BookShopApi.Dtos.Auth
         public string LastName { get; set; } = string.Empty;
 
         [Required]
+        [RegularExpression(@"^09\d{9}$", ErrorMessage = "شماره همراه باید با ۰۹ شروع شود و ۱۱ رقم باشد.")]
         public string PhoneNumber { get; set; } = string.Empty;
+
+        public bool IsVerified { get; set; } = true;
     }
 }
