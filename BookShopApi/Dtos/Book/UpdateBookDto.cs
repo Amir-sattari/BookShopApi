@@ -24,6 +24,9 @@ namespace BookShopApi.Dtos.Book
         [Required]
         public decimal Price { get; set; }
 
+        [Range(0, 99)]
+        public int DiscountPercentage { get; set; }
+
         [Required]
         public int Quantity { get; set; }
 

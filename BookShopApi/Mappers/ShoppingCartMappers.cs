@@ -1,4 +1,5 @@
 ﻿using BookShopApi.Dtos.ShoppingCart;
+using BookShopApi.Helpers;
 using BookShopApi.Models;
 
 namespace BookShopApi.Mappers
@@ -13,7 +14,7 @@ namespace BookShopApi.Mappers
                 BookId = cart.BookId,
                 Name = cart.Book.Title,
                 ImageUrl = imageUrl,
-                Price = cart.Book.Price,
+                Price = BookPriceHelper.GetEffectivePrice(cart.Book.Price, cart.Book.DiscountPercentage),
                 Quantity = cart.Quantity,
             };
         }
