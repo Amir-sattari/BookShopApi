@@ -6,7 +6,7 @@ namespace BookShopApi.Mappers
 {
     public static class UserMappers
     {
-        public static UserDto ToUserDto(this AppUser user)
+        public static UserDto ToUserDto(this AppUser user, IEnumerable<string>? roles = null)
         {
             var (firstName, lastName) = UserNameHelper.Split(user.UserName);
 
@@ -19,7 +19,8 @@ namespace BookShopApi.Mappers
                 PhoneNumber = user.PhoneNumber ?? string.Empty,
                 IsVerified = user.IsVerified,
                 CreatedAt = user.CreatedAt,
-                UpdatedAt = user.UpdatedAt
+                UpdatedAt = user.UpdatedAt,
+                Roles = roles?.ToList() ?? []
             };
         }
     }

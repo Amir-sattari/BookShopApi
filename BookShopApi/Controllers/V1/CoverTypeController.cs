@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.CoverType;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.CoverType;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -37,6 +39,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<CoverType>> CreateCoverTypeAsync(CreateCoverTypeDto coverTypeDto)
         {
             if (!ModelState.IsValid)
@@ -47,6 +50,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateCoverTypeAsync([FromBody] UpdateCoverTypeDto coverTypeDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -61,6 +65,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteCoverTypeAsync([FromRoute] int id)
         {
             var coverType = await _coverTypeRepo.DeleteCoverTypeAsync(id);

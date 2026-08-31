@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.ShippingMethod;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.ShippingMethod;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -37,6 +39,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost("CreateShippingMethod")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<ShippingMethod>> CreateShippingMethodAsync([FromBody] CreateShippingMethodDto methodDto)
         {
             if (!ModelState.IsValid)
@@ -47,6 +50,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("UpdateShippingMethod/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateShippingMethodAsync([FromBody] UpdateShippingMethodDto methodDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -61,6 +65,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("DeleteShippingMethod/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteShippingMethodAsync([FromRoute] int id)
         {
             var shippingMethod = await _shippingMethodRepo.DeleteShippingMethodAsync(id);

@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.Province;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.Province;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -37,6 +39,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost("CreateProvince")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<Province>> CreateProvinceAsync([FromBody] CreateProvinceDto provinceDto)
         {
             if (!ModelState.IsValid)
@@ -47,6 +50,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("UpdateProvince/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateProvinceAsync([FromBody] UpdateProvinceDto provinceDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -61,6 +65,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("Deleteprovince/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteProvinceAsync([FromRoute] int id)
         {
             var province = await _provinceRepo.DeleteProvinceAsync(id);

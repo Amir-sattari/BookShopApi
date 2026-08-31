@@ -10,5 +10,7 @@ namespace BookShopApi.Dtos.User
         public bool IsVerified { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public IList<string> Roles { get; set; } = new List<string>();
+        public string Role => Roles.FirstOrDefault() ?? string.Empty;
     }
 }

@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.Discount;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.Discount;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -70,6 +72,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost("CreateDiscount")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<Discount>> CreateDiscountAsync([FromBody] CreateDiscountDto discountDto)
         {
             if (!ModelState.IsValid)
@@ -81,6 +84,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("UpdateDiscount/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateDiscountAsync([FromBody] UpdateDiscountDto discountDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -95,6 +99,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("DeleteDiscount/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteDiscountAsync([FromRoute] int id)
         {
             var discount = await _discountRepo.DeleteDiscountByIdAsync(id);

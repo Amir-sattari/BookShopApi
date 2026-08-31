@@ -1,13 +1,16 @@
 ﻿using BookShopApi.Dtos.ShoppingCart;
+using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartRepository _shoppingCartRepo;
@@ -20,7 +23,10 @@ namespace BookShopApi.Controllers.V1
         [HttpGet("GetCartItemsByUserId/{userId}")]
         public async Task<ActionResult<IEnumerable<ShoppingCart>>> GetCartItemsAsync([FromRoute] string userId)
         {
-            var cartItems = await _shoppingCartRepo.GetCartItemsAsync(userId);
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
+
+            var cartItems = await _shoppingCartRepo.GetCartItemsAsync(currentUserId);
             var cartItemsDto = cartItems.Select(c => c.ToShoppingCartDto($"{Request.Scheme}://{Request.Host}{c.Book.ImageUrl}"));
             return Ok(cartItemsDto);
         }
@@ -31,6 +37,10 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+                return error!;
+
+            cartDto.UserId = currentUserId;
             await _shoppingCartRepo.AddToCartAsync(cartDto);
             return Ok(new { Message = "Book added to cart." });
         }
@@ -41,6 +51,10 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+                return error!;
+
+            cartDto.UserId = currentUserId;
             await _shoppingCartRepo.AddMultipleItemsToCartAsync(cartDto);
             return Ok(new { Message = "Book added to cart." });
         }
@@ -50,6 +64,11 @@ namespace BookShopApi.Controllers.V1
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+                return error!;
+
+            cartDto.UserId = currentUserId;
 
             try
             {
@@ -68,6 +87,11 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+                return error!;
+
+            cartDto.UserId = currentUserId;
+
             try
             {
                 var cartItem = await _shoppingCartRepo.DecrementCartItemQuantityAsync(cartDto);
@@ -82,18 +106,20 @@ namespace BookShopApi.Controllers.V1
         [HttpDelete("RemoveFromCart/{userId}/{bookId:int}")]
         public async Task<IActionResult> RemoveFromCartAsync([FromRoute] string userId, int bookId)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
 
-
-            await _shoppingCartRepo.RemovFromCartAsync(userId, bookId);
+            await _shoppingCartRepo.RemovFromCartAsync(currentUserId, bookId);
             return NoContent();
         }
 
         [HttpDelete("ClearCart/{userId}")]
         public async Task<IActionResult> ClearCartAsync([FromRoute] string userId)
         {
-            await _shoppingCartRepo.ClearCartAsync(userId);
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
+
+            await _shoppingCartRepo.ClearCartAsync(currentUserId);
             return NoContent();
         }
     }

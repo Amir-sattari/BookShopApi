@@ -1,5 +1,6 @@
 ﻿using BookShopApi.Dtos.Auth;
 using BookShopApi.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -80,6 +81,20 @@ namespace BookShopApi.Controllers.V1
             catch (Exception e)
             {
                 return BadRequest(new { Message = e.Message });
+            }
+        }
+
+        [Authorize]
+        [HttpGet("Me")]
+        public async Task<ActionResult<CurrentUserDto>> GetCurrentUserAsync()
+        {
+            try
+            {
+                return Ok(await _authService.GetCurrentUserAsync(User));
+            }
+            catch (InvalidOperationException)
+            {
+                return Unauthorized();
             }
         }
     }

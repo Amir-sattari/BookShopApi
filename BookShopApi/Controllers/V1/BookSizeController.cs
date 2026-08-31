@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.BookSize;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.BookSize;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -38,6 +40,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<BookSize>> CreateBookSizeAsync([FromBody] CreateBookSizeDto bookSizeDto)
         {
             if (!ModelState.IsValid)
@@ -48,6 +51,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateBookSizeAsync([FromBody] UpdateBookSizeDto bookSizeDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteBookSizeAsync([FromRoute] int id)
         {
             var bookSize = await _bookSizeRepo.DeleteBookSizeAsync(id);

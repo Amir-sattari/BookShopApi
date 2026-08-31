@@ -1,9 +1,11 @@
-﻿using BookShopApi.Dtos.Auth;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.Auth;
 using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace BookShopApi.Services
 {
@@ -39,7 +41,7 @@ namespace BookShopApi.Services
             user.OTP = otp;
             user.OPTExpiry = DateTime.UtcNow.AddMinutes(2);
 
-            var updatedUser = await _userManager.UpdateAsync(user);
+            await _userManager.UpdateAsync(user);
 
             return new RegisterResponseDto
             {
@@ -66,8 +68,9 @@ namespace BookShopApi.Services
             user.OPTExpiry = null;
 
             await _userManager.UpdateAsync(user);
+            await EnsureUserRoleAsync(user);
 
-            return _tokenService.CreateToken(user);
+            return await _tokenService.CreateTokenAsync(user);
         }
 
         public async Task<LoginResponseDto> SendLoginOtpAsync(LoginDto dto)
@@ -102,8 +105,40 @@ namespace BookShopApi.Services
             if (!OTPHelper.VerifyOTP(user.OTP, dto.OTP))
                 throw new InvalidOperationException("Invalid OTP");
 
-            return _tokenService.CreateToken(user);
-        
+            await EnsureUserRoleAsync(user);
+            return await _tokenService.CreateTokenAsync(user);
+        }
+
+        public async Task<CurrentUserDto> GetCurrentUserAsync(ClaimsPrincipal principal)
+        {
+            var userId = principal.GetUserId();
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new InvalidOperationException("User Not Found.");
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new InvalidOperationException("User Not Found.");
+
+            var roles = await _userManager.GetRolesAsync(user);
+            return new CurrentUserDto
+            {
+                Id = user.Id,
+                UserName = user.UserName ?? string.Empty,
+                PhoneNumber = user.PhoneNumber ?? string.Empty,
+                Roles = roles,
+                CanAccessAdmin = roles.Any(AppRoles.IsStaff)
+            };
+        }
+
+        private async Task EnsureUserRoleAsync(AppUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles.Count > 0)
+                return;
+
+            var hasManager = (await _userManager.GetUsersInRoleAsync(AppRoles.Manager)).Count > 0;
+            var role = hasManager ? AppRoles.User : AppRoles.Manager;
+            await _userManager.AddToRoleAsync(user, role);
         }
     }
 }

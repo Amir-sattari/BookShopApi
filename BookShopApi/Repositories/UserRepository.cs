@@ -1,3 +1,4 @@
+using BookShopApi.Constants;
 using BookShopApi.Data;
 using BookShopApi.Dtos.User;
 using BookShopApi.Helpers;
@@ -46,6 +47,7 @@ namespace BookShopApi.Repositories
             if (!result.Succeeded)
                 throw new InvalidOperationException(UserNameHelper.ToIdentityError(result));
 
+            await _userManager.AddToRoleAsync(user, AppRoles.User);
             return user;
         }
 

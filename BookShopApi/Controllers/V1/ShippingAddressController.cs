@@ -1,13 +1,17 @@
-﻿using BookShopApi.Dtos.ShippingAddress;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.ShippingAddress;
+using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ShippingAddressController : ControllerBase
     {
         private readonly IShippingAddressRepository _shippingAddressRepo;
@@ -18,6 +22,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpGet("GetAllShippingAddresses")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<IEnumerable<ShippingAddress>>> GetAllShippingAddressesAsync()
         {
             var shippingAddresses = await _shippingAddressRepo.GetAllShippingAddressesAsync();
@@ -28,9 +33,12 @@ namespace BookShopApi.Controllers.V1
         [HttpGet("GetShippingAddressByUserId/{userId}")]
         public async Task<ActionResult<ShippingAddress>> GetShippingAddressByUserIdAsync([FromRoute] string userId)
         {
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
+
             try
             {
-                var shippingAddress = await _shippingAddressRepo.GetShippingAddressByUserIdAsync(userId);
+                var shippingAddress = await _shippingAddressRepo.GetShippingAddressByUserIdAsync(currentUserId);
 
                 if (shippingAddress == null)
                     return NotFound(new { Message = "The Shipping Address Not Found." });
@@ -41,7 +49,7 @@ namespace BookShopApi.Controllers.V1
             {
                 return BadRequest(e.Message);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return BadRequest(new { Message = "An Unexpected Error Occurred."});
             }
@@ -52,6 +60,11 @@ namespace BookShopApi.Controllers.V1
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            if (!this.TryResolveCurrentUser(addressDto.UserId, out var currentUserId, out var error))
+                return error!;
+
+            addressDto.UserId = currentUserId;
 
             try
             {
@@ -71,7 +84,10 @@ namespace BookShopApi.Controllers.V1
         [HttpPut("UpdateShippingAddress/{userId}")]
         public async Task<IActionResult> UpdateShippingAddressAsync([FromBody] UpdateShippingAddressDto addressDto, [FromRoute] string userId)
         {
-            var updatedShippingAddress = await _shippingAddressRepo.UpdateShippingAddressAsync(addressDto, userId);
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
+
+            var updatedShippingAddress = await _shippingAddressRepo.UpdateShippingAddressAsync(addressDto, currentUserId);
 
             if (updatedShippingAddress == null)
                 return NotFound(new { Message = "The Shipping Address Not Found." });
@@ -82,7 +98,10 @@ namespace BookShopApi.Controllers.V1
         [HttpDelete("DeleteShippingAddress/{userId}")]
         public async Task<IActionResult> DeleteShippingAddressAsync([FromRoute] string userId)
         {
-            var updatedShippingAddress = await _shippingAddressRepo.DeleteShippingAddressByUserIdAsync(userId);
+            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+                return error!;
+
+            var updatedShippingAddress = await _shippingAddressRepo.DeleteShippingAddressByUserIdAsync(currentUserId);
 
             if (updatedShippingAddress == null)
                 return NotFound(new { Message = "The Shipping Address Not Found." });

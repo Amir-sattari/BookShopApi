@@ -1,7 +1,9 @@
-﻿using BookShopApi.Dtos.City;
+﻿using BookShopApi.Constants;
+using BookShopApi.Dtos.City;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopApi.Controllers.V1
@@ -45,6 +47,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPost("CreateCity")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<ActionResult<City>> CreateCityAsync([FromBody] CreateCityDto cityDto)
         {
             if (!ModelState.IsValid)
@@ -67,6 +70,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpPut("UpdateCity/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> UpdateCityAsync([FromBody] UpdateCityDto cityDto, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -93,6 +97,7 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpDelete("DeleteCity/{id:int}")]
+        [Authorize(Roles = AppRoles.Staff)]
         public async Task<IActionResult> DeleteCityAsync([FromRoute] int id)
         {
             var city = await _cityRepo.DeleteCityAsync(id);
