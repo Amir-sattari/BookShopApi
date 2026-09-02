@@ -3,3 +3,22 @@
 ################################################################################
 
 /.vs
+.idea/
+
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / Rider
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# New runtime uploads (already-tracked seed images stay in git)
+BookShopApi/wwwroot/Images/**
+BookShopApi/wwwroot/images/**
+
+# Local secret overlays — keep appsettings.json committed
+appsettings.Local.json
+**/appsettings.Local.json
