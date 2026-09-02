@@ -14,7 +14,7 @@ namespace BookShopApi.Mappers
                 BookId = cart.BookId,
                 Name = cart.Book.Title,
                 ImageUrl = imageUrl,
-                Price = BookPriceHelper.GetEffectivePrice(cart.Book.Price, cart.Book.DiscountPercentage),
+                Price = BookPriceHelper.GetEffectivePrice(cart.Book.Price, cart.Book.GetCurrentlyActiveDiscount()?.Percentage ?? 0),
                 Quantity = cart.Quantity,
             };
         }

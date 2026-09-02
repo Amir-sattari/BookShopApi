@@ -18,9 +18,45 @@ namespace BookShopApi.Data
 
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(18, 2);
 
+            modelBuilder.Entity<BookDiscount>().Property(d => d.Percentage).HasPrecision(5, 2);
+            modelBuilder.Entity<Coupon>().Property(c => c.Percentage).HasPrecision(5, 2);
+            modelBuilder.Entity<Coupon>().Property(c => c.Code).HasMaxLength(64);
+            modelBuilder.Entity<Coupon>().HasIndex(c => c.Code).IsUnique();
+            modelBuilder.Entity<Coupon>().Property(c => c.UsedCount).IsConcurrencyToken();
+
+            modelBuilder.Entity<CouponUsage>().Property(u => u.UserId).HasMaxLength(450);
+            modelBuilder.Entity<CouponUsage>().HasIndex(u => new { u.CouponId, u.UserId });
+
+            modelBuilder.Entity<BookDiscount>()
+                .HasOne(d => d.Book)
+                .WithMany(b => b.BookDiscounts)
+                .HasForeignKey(d => d.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Coupon>()
+                .HasMany(c => c.ApplicableBooks)
+                .WithMany()
+                .UsingEntity<Dictionary<string, object>>(
+                    "CouponBooks",
+                    j => j.HasOne<Book>().WithMany().HasForeignKey("BookId").OnDelete(DeleteBehavior.Restrict),
+                    j => j.HasOne<Coupon>().WithMany().HasForeignKey("CouponId").OnDelete(DeleteBehavior.Cascade));
+
+            modelBuilder.Entity<CouponUsage>()
+                .HasOne(u => u.Coupon)
+                .WithMany(c => c.Usages)
+                .HasForeignKey(u => u.CouponId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<CouponUsage>()
+                .HasOne<AppUser>()
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
 
             modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted);
+            modelBuilder.Entity<BookDiscount>().HasQueryFilter(d => !d.Book.IsDeleted);
 
             modelBuilder.Entity<Publication>().HasQueryFilter(p => !p.IsDeleted);
 
@@ -121,5 +157,8 @@ namespace BookShopApi.Data
         public DbSet<City> Cities { get; set; }
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<BookDiscount> BookDiscounts { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<CouponUsage> CouponUsages { get; set; }
     }
 }

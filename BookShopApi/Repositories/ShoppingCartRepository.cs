@@ -54,7 +54,10 @@ namespace BookShopApi.Repositories
         }
         public async Task<ShoppingCart> IncrementCartItemQuantityAsync(UpdateShoppingCartDto cartDto)
         {
-            var cartItem = await _context.ShoppingCarts.Where(s => s.UserId == cartDto.UserId && s.BookId == cartDto.BookId).Include(s => s.Book)
+            var cartItem = await _context.ShoppingCarts
+                .Where(s => s.UserId == cartDto.UserId && s.BookId == cartDto.BookId)
+                .Include(s => s.Book)
+                    .ThenInclude(b => b.BookDiscounts)
                 .FirstOrDefaultAsync();
 
             if (cartItem == null)
@@ -68,7 +71,10 @@ namespace BookShopApi.Repositories
         
         public async Task<ShoppingCart> DecrementCartItemQuantityAsync(UpdateShoppingCartDto cartDto)
         {
-            var cartItem = await _context.ShoppingCarts.Where(s => s.UserId == cartDto.UserId && s.BookId == cartDto.BookId).Include(s => s.Book)
+            var cartItem = await _context.ShoppingCarts
+                .Where(s => s.UserId == cartDto.UserId && s.BookId == cartDto.BookId)
+                .Include(s => s.Book)
+                    .ThenInclude(b => b.BookDiscounts)
                 .FirstOrDefaultAsync();
 
             if (cartItem == null)
@@ -83,7 +89,11 @@ namespace BookShopApi.Repositories
         }
         public async Task<IEnumerable<ShoppingCart>> GetCartItemsAsync(string userId)
         {
-            return await _context.ShoppingCarts.Where(s => s.UserId == userId && !s.Book.IsDeleted).Include(s => s.Book).ToListAsync();
+            return await _context.ShoppingCarts
+                .Where(s => s.UserId == userId && !s.Book.IsDeleted)
+                .Include(s => s.Book)
+                    .ThenInclude(b => b.BookDiscounts)
+                .ToListAsync();
         }
 
         public async Task ClearCartAsync(string userId)

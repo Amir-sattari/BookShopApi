@@ -17,7 +17,7 @@ namespace BookShopApi.Mappers
                 Description = book.Description,
                 ImageUrl = imageUrl,
                 Price = book.Price,
-                DiscountPercentage = book.DiscountPercentage,
+                DiscountPercentage = book.GetCurrentlyActiveDiscount()?.Percentage ?? 0,
                 Quantity = book.Quantity,
                 PageCount = book.PageCount,
                 PrintSeries = book.PrintSeries,
@@ -44,7 +44,6 @@ namespace BookShopApi.Mappers
                 Description = bookDto.Description,
                 ImageUrl = imageUrl,
                 Price = bookDto.Price,
-                DiscountPercentage = bookDto.DiscountPercentage,
                 Quantity = bookDto.Quantity,
                 PageCount = bookDto.PageCount,
                 PrintSeries = bookDto.PrintSeries,
@@ -62,7 +61,6 @@ namespace BookShopApi.Mappers
             book.Description = bookDto.Description;
             //book.ImageUrl = imageUrl;
             book.Price = bookDto.Price;
-            book.DiscountPercentage = bookDto.DiscountPercentage;
             book.Quantity = bookDto.Quantity;
             book.PageCount = bookDto.PageCount;
             book.PrintSeries = bookDto.PrintSeries;
@@ -81,7 +79,6 @@ namespace BookShopApi.Mappers
                 Description = bookDto.Description,
                 ImageUrl = imageUrl,
                 Price = bookDto.Price,
-                DiscountPercentage = bookDto.DiscountPercentage,
                 Quantity = bookDto.Quantity,
                 PageCount = bookDto.PageCount,
                 PrintSeries = bookDto.PrintSeries,

@@ -14,10 +14,17 @@ namespace BookShopApi.Controllers.V1
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartRepository _shoppingCartRepo;
+        private readonly IPriceCalculationService _priceCalculationService;
+        private readonly ICouponRepository _couponRepo;
 
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository)
+        public ShoppingCartController(
+            IShoppingCartRepository shoppingCartRepository,
+            IPriceCalculationService priceCalculationService,
+            ICouponRepository couponRepository)
         {
             _shoppingCartRepo = shoppingCartRepository;
+            _priceCalculationService = priceCalculationService;
+            _couponRepo = couponRepository;
         }
 
         [HttpGet("GetCartItemsByUserId/{userId}")]
@@ -121,6 +128,89 @@ namespace BookShopApi.Controllers.V1
 
             await _shoppingCartRepo.ClearCartAsync(currentUserId);
             return NoContent();
+        }
+
+        [HttpPost("ApplyCoupon")]
+        public async Task<ActionResult<CartPriceResult>> ApplyCouponAsync([FromBody] ApplyCouponDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
+                return error!;
+
+            try
+            {
+                var items = await ResolveCartItemsAsync(dto, currentUserId);
+                if (!items.Any())
+                    return BadRequest(new { Message = "Cart is empty." });
+
+                var result = await _priceCalculationService.CalculateCartTotalAsync(
+                    items,
+                    dto.CouponCode,
+                    currentUserId);
+
+                return Ok(result);
+            }
+            catch (CouponValidationException e)
+            {
+                return BadRequest(new { Message = e.Message });
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(new { Message = e.Message });
+            }
+        }
+
+        [HttpPost("RedeemCoupon")]
+        public async Task<IActionResult> RedeemCouponAsync([FromBody] ApplyCouponDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (string.IsNullOrWhiteSpace(dto.CouponCode))
+                return BadRequest(new { Message = "Coupon code is required." });
+
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
+                return error!;
+
+            try
+            {
+                var items = await ResolveCartItemsAsync(dto, currentUserId);
+                if (!items.Any())
+                    return BadRequest(new { Message = "Cart is empty." });
+
+                var preview = await _priceCalculationService.CalculateCartTotalAsync(
+                    items,
+                    dto.CouponCode,
+                    currentUserId);
+
+                if (!preview.CouponHadNoEffect)
+                    await _couponRepo.RedeemAsync(dto.CouponCode, currentUserId);
+
+                return Ok(preview);
+            }
+            catch (CouponValidationException e)
+            {
+                return BadRequest(new { Message = e.Message });
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(new { Message = e.Message });
+            }
+        }
+
+        private async Task<List<CartItemDto>> ResolveCartItemsAsync(ApplyCouponDto dto, string userId)
+        {
+            if (dto.CartItems != null && dto.CartItems.Count > 0)
+                return dto.CartItems;
+
+            var cart = await _shoppingCartRepo.GetCartItemsAsync(userId);
+            return cart.Select(c => new CartItemDto
+            {
+                BookId = c.BookId,
+                Quantity = c.Quantity
+            }).ToList();
         }
     }
 }

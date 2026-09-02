@@ -1,5 +1,6 @@
 ﻿using BookShopApi.Data;
 using BookShopApi.Dtos.Book;
+using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
@@ -20,12 +21,18 @@ namespace BookShopApi.Repositories
 
         public async Task<IEnumerable<Book>> GetAllBooksAsync()
         {
-            return await _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).ToListAsync();
+            return await _context.Books
+                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
+                .Include(b => b.BookDiscounts)
+                .ToListAsync();
         }
 
         public async Task<Book?> GetBookByIdAsync(int id)
         {
-            return await _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.Books
+                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
+                .Include(b => b.BookDiscounts)
+                .FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task<IEnumerable<Book>> GetBooksByCategoryId(int categoryId)
@@ -33,8 +40,11 @@ namespace BookShopApi.Repositories
             if (!await IsCategoryExist(categoryId))
                 throw new ArgumentException("Category with the specified ID does not exist.");
 
-            return await _context.Books.Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId))
-                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category).ToListAsync();
+            return await _context.Books
+                .Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId))
+                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
+                .Include(b => b.BookDiscounts)
+                .ToListAsync();
         }
 
         public async Task<Book> CreateBookAsync(CreateBookDto bookDto)
@@ -49,6 +59,8 @@ namespace BookShopApi.Repositories
             await AddCategoriesToBookAsync(bookModel, bookDto.CategoryIds);
 
             await _context.Books.AddAsync(bookModel);
+            await _context.SaveChangesAsync();
+            await SyncBookDiscountAsync(bookModel.Id, bookDto.DiscountPercentage);
             await _context.SaveChangesAsync();
             return bookModel;
         }
@@ -75,6 +87,7 @@ namespace BookShopApi.Repositories
             book.SetDataToBookFromUpdateDto(bookDto);
 
             await UpdateBookCategoriesAsync(book, bookDto.CategoryIds);
+            await SyncBookDiscountAsync(book.Id, bookDto.DiscountPercentage);
 
             await _context.SaveChangesAsync();
             return book;
@@ -129,6 +142,39 @@ namespace BookShopApi.Repositories
 
             if (!await _context.CoverTypes.AnyAsync(c => c.Id == dto.CoverTypeId && !c.IsDeleted))
                 throw new ArgumentException("Invalid or deleted CoverTypeId");
+        }
+
+        private async Task SyncBookDiscountAsync(int bookId, decimal percentage)
+        {
+            var activeDiscounts = await _context.BookDiscounts
+                .Where(d => d.BookId == bookId && d.IsActive)
+                .ToListAsync();
+
+            var now = DateTime.UtcNow;
+            var currentlyActive = activeDiscounts
+                .Where(d => d.IsCurrentlyActive(now) && d.Percentage > 0)
+                .OrderByDescending(d => d.Id)
+                .FirstOrDefault();
+
+            if (percentage <= 0)
+            {
+                foreach (var discount in activeDiscounts)
+                    discount.IsActive = false;
+                return;
+            }
+
+            if (currentlyActive != null && currentlyActive.Percentage == percentage)
+                return;
+
+            foreach (var discount in activeDiscounts)
+                discount.IsActive = false;
+
+            await _context.BookDiscounts.AddAsync(new BookDiscount
+            {
+                BookId = bookId,
+                Percentage = percentage,
+                IsActive = true
+            });
         }
 
         private async Task<bool> IsCategoryExist(int id)
