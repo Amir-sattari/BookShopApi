@@ -81,13 +81,16 @@ builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 builder.Services.AddScoped<IBookDiscountRepository, BookDiscountRepository>();
 builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 builder.Services.AddScoped<IPriceCalculationService, PriceCalculationService>();
+builder.Services.AddScoped<ISmsService, SmsService>();
+builder.Services.AddScoped<IStockNotificationService, StockNotificationService>();
 
 builder.Services.Configure<ImageSettings>(builder.Configuration.GetSection("ImageSettings"));
 builder.WebHost.ConfigureKestrel(option => option.Limits.MaxRequestBodySize = 10 * 1024 * 1024);
 
 var app = builder.Build();
 
-await IdentitySeeder.SeedAsync(app.Services);
+if (!EF.IsDesignTime)
+    await LocationSeeder.SeedAsync(app.Services);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

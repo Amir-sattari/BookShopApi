@@ -20,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\SeedData\iran-locations.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Images\" />
     <Folder Include="wwwroot\Images\Book\" />
     <Folder Include="wwwroot\Images\Category\" />

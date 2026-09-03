@@ -12,11 +12,19 @@ namespace BookShopApi.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly IFileService _fileService;
+        private readonly IServiceScopeFactory _scopeFactory;
+        private readonly ILogger<BookRepository> _logger;
 
-        public BookRepository(ApplicationDbContext applicationDbContext, IFileService fileService)
+        public BookRepository(
+            ApplicationDbContext applicationDbContext,
+            IFileService fileService,
+            IServiceScopeFactory scopeFactory,
+            ILogger<BookRepository> logger)
         {
             _context = applicationDbContext;
             _fileService = fileService;
+            _scopeFactory = scopeFactory;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<Book>> GetAllBooksAsync()
@@ -74,6 +82,8 @@ namespace BookShopApi.Repositories
             if (book == null)
                 return null;
 
+            var previousQuantity = book.Quantity;
+
             if (bookDto.ImageFile != null)
             {
                 var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
@@ -90,6 +100,7 @@ namespace BookShopApi.Repositories
             await SyncBookDiscountAsync(book.Id, bookDto.DiscountPercentage);
 
             await _context.SaveChangesAsync();
+            NotifyIfRestocked(book.Id, previousQuantity, book.Quantity);
             return book;
         }
 
@@ -180,6 +191,31 @@ namespace BookShopApi.Repositories
         private async Task<bool> IsCategoryExist(int id)
         {
             return await _context.Categories.AnyAsync(c => c.Id == id);
+        }
+
+        private void NotifyIfRestocked(int bookId, int previousQuantity, int newQuantity)
+        {
+            if (previousQuantity != 0 || newQuantity <= 0)
+                return;
+
+            // Fire-and-forget so the admin's request doesn't wait on notification processing.
+            // Temporary until a real background job/queue (e.g. Hangfire) is introduced.
+            // A new DI scope is required because the request scope (and DbContext) is disposed after the HTTP response.
+            _ = NotifySubscribersInBackgroundAsync(bookId);
+        }
+
+        private async Task NotifySubscribersInBackgroundAsync(int bookId)
+        {
+            try
+            {
+                await using var scope = _scopeFactory.CreateAsyncScope();
+                var stockNotificationService = scope.ServiceProvider.GetRequiredService<IStockNotificationService>();
+                await stockNotificationService.NotifySubscribersForBookAsync(bookId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to process stock notifications for book {BookId}.", bookId);
+            }
         }
     }
 }

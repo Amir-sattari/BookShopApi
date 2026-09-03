@@ -53,6 +53,24 @@ namespace BookShopApi.Data
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<StockNotificationRequest>().Property(r => r.UserId).HasMaxLength(450);
+            modelBuilder.Entity<StockNotificationRequest>()
+                .HasIndex(r => new { r.BookId, r.UserId })
+                .IsUnique()
+                .HasFilter("[IsNotified] = 0");
+            modelBuilder.Entity<StockNotificationRequest>()
+                .HasOne(r => r.Book)
+                .WithMany(b => b.StockNotificationRequests)
+                .HasForeignKey(r => r.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<StockNotificationRequest>()
+                .HasOne(r => r.User)
+                .WithMany(u => u.StockNotificationRequests)
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<StockNotificationRequest>()
+                .HasQueryFilter(r => !r.Book.IsDeleted && !r.User.IsDeleted);
+
             modelBuilder.Entity<AppUser>().HasQueryFilter(u => !u.IsDeleted);
 
             modelBuilder.Entity<Book>().HasQueryFilter(b => !b.IsDeleted);
@@ -160,5 +178,6 @@ namespace BookShopApi.Data
         public DbSet<BookDiscount> BookDiscounts { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<CouponUsage> CouponUsages { get; set; }
+        public DbSet<StockNotificationRequest> StockNotificationRequests { get; set; }
     }
 }
