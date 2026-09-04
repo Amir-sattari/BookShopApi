@@ -1,4 +1,5 @@
 using BookShopApi.Constants;
+using BookShopApi.Dtos.Common;
 using BookShopApi.Dtos.Role;
 using BookShopApi.Dtos.User;
 using BookShopApi.Helpers;
@@ -32,7 +33,7 @@ namespace BookShopApi.Controllers.V1
         [HttpGet("users")]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsersWithRolesAsync()
         {
-            var users = (await _userRepo.GetAllUsersAsync()).ToList();
+            var users = (await _userRepo.GetUsersAsync(new PagedQuery())).Items.ToList();
             var roleMap = await _roleService.GetUserRolesMapAsync(users.Select(user => user.Id));
             return Ok(users.Select(user => user.ToUserDto(roleMap.GetValueOrDefault(user.Id))));
         }

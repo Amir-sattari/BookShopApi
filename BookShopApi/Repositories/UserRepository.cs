@@ -1,6 +1,8 @@
 using BookShopApi.Constants;
 using BookShopApi.Data;
+using BookShopApi.Dtos.Common;
 using BookShopApi.Dtos.User;
+using BookShopApi.Extensions;
 using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Models;
@@ -20,11 +22,16 @@ namespace BookShopApi.Repositories
             _userManager = userManager;
         }
 
-        public async Task<IEnumerable<AppUser>> GetAllUsersAsync()
+        public async Task<PagedResult<AppUser>> GetUsersAsync(PagedQuery query)
         {
-            return await _userManager.Users
-                .OrderByDescending(user => user.CreatedAt)
-                .ToListAsync();
+            query.Normalize();
+
+            var users = _userManager.Users
+                .AsNoTracking()
+                .ApplySearch(query.Search)
+                .ApplySort(query.SortKey, query.SortDirection, applyDefault: true);
+
+            return await users.ToPagedResultAsync(query);
         }
 
         public async Task<AppUser?> GetUserByIdAsync(string id)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookShopApi.Extensions
 {
-    // Shared query pipeline for list endpoints. Entity maps (BookQueryableExtensions, later User) stay in this file.
+    // Shared query pipeline for list endpoints. Entity maps (Book/User) stay in this file.
     public static class QueryableExtensions
     {
         public static IQueryable<T> ApplyFilter<T>(this IQueryable<T> query, Expression<Func<T, bool>>? predicate)
@@ -214,6 +214,40 @@ namespace BookShopApi.Extensions
                         .FirstOrDefault(),
                     descending)
                 .ThenByDirection(b => b.Id);
+        }
+    }
+
+    public static class UserQueryableExtensions
+    {
+        public static readonly IReadOnlyDictionary<string, Func<IQueryable<AppUser>, bool, IQueryable<AppUser>>> SortSelectors =
+            new Dictionary<string, Func<IQueryable<AppUser>, bool, IQueryable<AppUser>>>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["username"] = (query, descending) => query.OrderByDirection(u => u.UserName, descending).ThenByDirection(u => u.Id),
+                ["phonenumber"] = (query, descending) => query.OrderByDirection(u => u.PhoneNumber, descending).ThenByDirection(u => u.Id),
+                ["isverified"] = (query, descending) => query.OrderByDirection(u => u.IsVerified, descending).ThenByDirection(u => u.Id),
+                ["createdat"] = (query, descending) => query.OrderByDirection(u => u.CreatedAt, descending).ThenByDirection(u => u.Id)
+            };
+
+        public static IQueryable<AppUser> ApplySearch(this IQueryable<AppUser> query, string? term)
+        {
+            return query.ApplySearch(
+                term,
+                u => u.UserName ?? string.Empty,
+                u => u.PhoneNumber ?? string.Empty);
+        }
+
+        public static IQueryable<AppUser> ApplySort(
+            this IQueryable<AppUser> query,
+            string? sortKey,
+            string? sortDirection,
+            bool applyDefault = false)
+        {
+            return QueryableExtensions.ApplySort(
+                query,
+                sortKey,
+                sortDirection,
+                SortSelectors,
+                applyDefault ? q => q.OrderByDescending(u => u.CreatedAt).ThenBy(u => u.Id) : null);
         }
     }
 }

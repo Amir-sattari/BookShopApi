@@ -1,4 +1,5 @@
 using BookShopApi.Constants;
+using BookShopApi.Dtos.Common;
 using BookShopApi.Dtos.User;
 using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
@@ -24,11 +25,17 @@ namespace BookShopApi.Controllers.V1
 
         [HttpGet]
         [Authorize(Roles = AppRoles.Staff)]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetAllUsersAsync()
+        public async Task<ActionResult<PagedResult<UserDto>>> GetUsersAsync([FromQuery] PagedQuery query)
         {
-            var users = (await _userRepo.GetAllUsersAsync()).ToList();
-            var roleMap = await _roleService.GetUserRolesMapAsync(users.Select(user => user.Id));
-            return Ok(users.Select(user => user.ToUserDto(roleMap.GetValueOrDefault(user.Id))));
+            var result = await _userRepo.GetUsersAsync(query);
+            var roleMap = await _roleService.GetUserRolesMapAsync(result.Items.Select(user => user.Id));
+            return Ok(new PagedResult<UserDto>
+            {
+                Items = result.Items.Select(user => user.ToUserDto(roleMap.GetValueOrDefault(user.Id))).ToList(),
+                TotalCount = result.TotalCount,
+                Page = result.Page,
+                PageSize = result.PageSize
+            });
         }
 
         [HttpGet("{id}")]
@@ -101,8 +108,8 @@ namespace BookShopApi.Controllers.V1
             var roles = await _roleService.GetUserRolesAsync(id);
             if (roles.Contains(AppRoles.Manager))
             {
-                var users = await _userRepo.GetAllUsersAsync();
-                var roleMap = await _roleService.GetUserRolesMapAsync(users.Select(item => item.Id));
+                var users = await _userRepo.GetUsersAsync(new PagedQuery());
+                var roleMap = await _roleService.GetUserRolesMapAsync(users.Items.Select(item => item.Id));
                 var managerCount = roleMap.Values.Count(list => list.Contains(AppRoles.Manager));
                 if (managerCount <= 1)
                     return BadRequest(new { ErrorMessage = "نمی‌توان تنها مدیر سیستم را حذف کرد." });
