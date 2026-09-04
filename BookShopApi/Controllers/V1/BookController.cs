@@ -1,5 +1,6 @@
 ﻿using BookShopApi.Constants;
 using BookShopApi.Dtos.Book;
+using BookShopApi.Dtos.Common;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
@@ -20,11 +21,16 @@ namespace BookShopApi.Controllers.V1
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Book>>> GetAllBooksAsync()
+        public async Task<ActionResult<PagedResult<BookDto>>> GetBooksAsync([FromQuery] PagedQuery query)
         {
-            var books = await _bookRepo.GetAllBooksAsync();
-            var booksDto = books.Select(b => b.ToBookDto($"{Request.Scheme}://{Request.Host}{b.ImageUrl}")).ToList();
-            return Ok(booksDto);
+            var result = await _bookRepo.GetBooksAsync(query);
+            return Ok(new PagedResult<BookDto>
+            {
+                Items = result.Items.Select(b => b.ToBookDto(ToAbsoluteImageUrl(b.ImageUrl))).ToList(),
+                TotalCount = result.TotalCount,
+                Page = result.Page,
+                PageSize = result.PageSize
+            });
         }
 
         [HttpGet("GetBookById/{id:int}")]
@@ -35,7 +41,7 @@ namespace BookShopApi.Controllers.V1
             if (book == null)
                 return NotFound(new { ErrorMessage = $"The book with Id: {id}, Not found." });
 
-            return Ok(book.ToBookDto($"{Request.Scheme}://{Request.Host}{book.ImageUrl}"));
+            return Ok(book.ToBookDto(ToAbsoluteImageUrl(book.ImageUrl)));
         }
 
         [HttpGet("GetBooksByCategoryId/{categoryId:int}")]
@@ -51,7 +57,7 @@ namespace BookShopApi.Controllers.V1
                 if (books == null | !books.Any())
                     return NotFound("No books found for the specified category.");
 
-                var booksDto = books.Select(b => b.ToBookDto($"{Request.Scheme}://{Request.Host}{b.ImageUrl}")).ToList();
+                var booksDto = books.Select(b => b.ToBookDto(ToAbsoluteImageUrl(b.ImageUrl))).ToList();
                 return Ok(booksDto);
             }
             catch (ArgumentException e)
@@ -71,7 +77,7 @@ namespace BookShopApi.Controllers.V1
                     return BadRequest(ModelState);
 
                 var createdBook = await _bookRepo.CreateBookAsync(bookDto);
-                return Created($"api/book/{createdBook.Id}", createdBook.ToBookDto($"{Request.Scheme}://{Request.Host}{createdBook.ImageUrl}"));
+                return Created($"api/book/{createdBook.Id}", createdBook.ToBookDto(ToAbsoluteImageUrl(createdBook.ImageUrl)));
             }
             catch (ArgumentException e)
             {
@@ -120,5 +126,8 @@ namespace BookShopApi.Controllers.V1
 
             return NoContent();
         }
+
+        private string ToAbsoluteImageUrl(string imageUrl) =>
+            $"{Request.Scheme}://{Request.Host}{imageUrl}";
     }
 }

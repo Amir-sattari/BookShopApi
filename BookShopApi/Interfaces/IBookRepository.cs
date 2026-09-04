@@ -1,11 +1,12 @@
 ﻿using BookShopApi.Dtos.Book;
+using BookShopApi.Dtos.Common;
 using BookShopApi.Models;
 
 namespace BookShopApi.Interfaces
 {
     public interface IBookRepository
     {
-        Task<IEnumerable<Book>> GetAllBooksAsync();
+        Task<PagedResult<Book>> GetBooksAsync(PagedQuery query);
         Task<Book?> GetBookByIdAsync(int id);
         Task<IEnumerable<Book>> GetBooksByCategoryId(int id);
         Task<Book> CreateBookAsync(CreateBookDto book);

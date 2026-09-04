@@ -1,5 +1,7 @@
 ﻿using BookShopApi.Data;
 using BookShopApi.Dtos.Book;
+using BookShopApi.Dtos.Common;
+using BookShopApi.Extensions;
 using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
@@ -27,19 +29,22 @@ namespace BookShopApi.Repositories
             _logger = logger;
         }
 
-        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+        public async Task<PagedResult<Book>> GetBooksAsync(PagedQuery query)
         {
-            return await _context.Books
-                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
-                .Include(b => b.BookDiscounts)
-                .ToListAsync();
+            query.Normalize();
+
+            var books = BooksWithDetails()
+                .AsNoTracking()
+                .ApplySearch(query.Search)
+                .ApplySort(query.SortKey, query.SortDirection, applyDefault: query.IsPaged)
+                .AsSplitQuery();
+
+            return await books.ToPagedResultAsync(query);
         }
 
         public async Task<Book?> GetBookByIdAsync(int id)
         {
-            return await _context.Books
-                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
-                .Include(b => b.BookDiscounts)
+            return await BooksWithDetails()
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
 
@@ -48,10 +53,8 @@ namespace BookShopApi.Repositories
             if (!await IsCategoryExist(categoryId))
                 throw new ArgumentException("Category with the specified ID does not exist.");
 
-            return await _context.Books
-                .Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId))
-                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
-                .Include(b => b.BookDiscounts)
+            return await BooksWithDetails()
+                .ApplyFilter(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId))
                 .ToListAsync();
         }
 
@@ -117,6 +120,13 @@ namespace BookShopApi.Repositories
         }
 
         // Private Methods
+
+        private IQueryable<Book> BooksWithDetails()
+        {
+            return _context.Books
+                .Include(b => b.BookCategories).ThenInclude(bc => bc.Category)
+                .Include(b => b.BookDiscounts);
+        }
 
         private async Task UpdateBookCategoriesAsync(Book book, List<int> newCategoryIds)
         {
