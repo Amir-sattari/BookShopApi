@@ -6,6 +6,7 @@ namespace BookShopApi.Interfaces
     public interface IShippingAddressRepository
     {
         Task<ICollection<ShippingAddress>> GetAllShippingAddressesAsync();
+        Task<ShippingAddress?> GetShippingAddressByIdAsync(int id);
         Task<ShippingAddress?> GetShippingAddressByUserIdAsync(string userId);
         Task<ShippingAddress> CreateShippingAddressAsync(CreateShippingAddressDto addressDto);
         Task<ShippingAddress?> UpdateShippingAddressAsync(UpdateShippingAddressDto addressDto, string userId);

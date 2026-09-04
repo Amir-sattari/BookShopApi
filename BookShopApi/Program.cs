@@ -83,6 +83,8 @@ builder.Services.AddScoped<ICouponRepository, CouponRepository>();
 builder.Services.AddScoped<IPriceCalculationService, PriceCalculationService>();
 builder.Services.AddScoped<ISmsService, SmsService>();
 builder.Services.AddScoped<IStockNotificationService, StockNotificationService>();
+builder.Services.AddScoped<IPaymentService, StubPaymentService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.Configure<ImageSettings>(builder.Configuration.GetSection("ImageSettings"));
 builder.WebHost.ConfigureKestrel(option => option.Limits.MaxRequestBodySize = 10 * 1024 * 1024);

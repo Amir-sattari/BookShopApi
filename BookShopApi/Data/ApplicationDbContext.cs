@@ -124,6 +124,39 @@ namespace BookShopApi.Data
                 .WithMany(p => p.Cities)
                 .HasForeignKey(c => c.ProvinceId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>().Property(o => o.UserId).HasMaxLength(450);
+            modelBuilder.Entity<Order>().HasIndex(o => o.UserId);
+            modelBuilder.Entity<Order>().HasIndex(o => o.Status);
+            modelBuilder.Entity<Order>().Property(o => o.SubTotal).HasPrecision(18, 2);
+            modelBuilder.Entity<Order>().Property(o => o.BookDiscountTotal).HasPrecision(18, 2);
+            modelBuilder.Entity<Order>().Property(o => o.CouponDiscountTotal).HasPrecision(18, 2);
+            modelBuilder.Entity<Order>().Property(o => o.TotalAmount).HasPrecision(18, 2);
+            modelBuilder.Entity<Order>().Property(o => o.CouponCode).HasMaxLength(64);
+            modelBuilder.Entity<Order>().Property(o => o.PaymentReferenceId).HasMaxLength(128);
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            // SetNull: deleting a shipping address must not wipe order history; snapshots stay on the Order.
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.ShippingAddress)
+                .WithMany()
+                .HasForeignKey(o => o.ShippingAddressId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithOne(i => i.Order)
+                .HasForeignKey(i => i.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<OrderItem>().Property(i => i.UnitPrice).HasPrecision(18, 2);
+            modelBuilder.Entity<OrderItem>()
+                .HasOne(i => i.Book)
+                .WithMany(b => b.OrderItems)
+                .HasForeignKey(i => i.BookId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         public override int SaveChanges()
@@ -179,5 +212,7 @@ namespace BookShopApi.Data
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<CouponUsage> CouponUsages { get; set; }
         public DbSet<StockNotificationRequest> StockNotificationRequests { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

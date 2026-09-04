@@ -5,6 +5,7 @@ using BookShopApi.Interfaces;
 using BookShopApi.Mappers;
 using BookShopApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BookShopApi.Repositories
 {
@@ -114,34 +115,51 @@ namespace BookShopApi.Repositories
 
         public async Task RedeemAsync(string code, string userId)
         {
-            await using var transaction = await _context.Database.BeginTransactionAsync();
-
-            var validation = await ValidateForUseAsync(code, userId);
-            if (!validation.IsValid || validation.Coupon == null)
-                throw new CouponValidationException(validation.ErrorMessage ?? "Coupon is not valid.");
-
-            var coupon = await _context.Coupons.FirstAsync(c => c.Id == validation.Coupon.Id);
-
-            if (coupon.MaxUsageCount.HasValue && coupon.UsedCount >= coupon.MaxUsageCount.Value)
-                throw new CouponValidationException("Coupon has reached its usage limit.");
-
-            coupon.UsedCount++;
-            _context.CouponUsages.Add(new CouponUsage
-            {
-                CouponId = coupon.Id,
-                UserId = userId,
-                UsedAt = DateTime.UtcNow
-            });
+            var ownsTransaction = _context.Database.CurrentTransaction == null;
+            IDbContextTransaction? transaction = null;
+            if (ownsTransaction)
+                transaction = await _context.Database.BeginTransactionAsync();
 
             try
             {
+                var validation = await ValidateForUseAsync(code, userId);
+                if (!validation.IsValid || validation.Coupon == null)
+                    throw new CouponValidationException(validation.ErrorMessage ?? "Coupon is not valid.");
+
+                var coupon = await _context.Coupons.FirstAsync(c => c.Id == validation.Coupon.Id);
+
+                if (coupon.MaxUsageCount.HasValue && coupon.UsedCount >= coupon.MaxUsageCount.Value)
+                    throw new CouponValidationException("Coupon has reached its usage limit.");
+
+                coupon.UsedCount++;
+                _context.CouponUsages.Add(new CouponUsage
+                {
+                    CouponId = coupon.Id,
+                    UserId = userId,
+                    UsedAt = DateTime.UtcNow
+                });
+
                 await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
+
+                if (ownsTransaction && transaction != null)
+                    await transaction.CommitAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                await transaction.RollbackAsync();
+                if (ownsTransaction && transaction != null)
+                    await transaction.RollbackAsync();
                 throw new CouponValidationException("Coupon usage limit was reached. Please try another code.");
+            }
+            catch
+            {
+                if (ownsTransaction && transaction != null)
+                    await transaction.RollbackAsync();
+                throw;
+            }
+            finally
+            {
+                if (ownsTransaction && transaction != null)
+                    await transaction.DisposeAsync();
             }
         }
 

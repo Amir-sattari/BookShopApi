@@ -34,6 +34,7 @@ namespace BookShopApi.Models
         public ICollection<ShoppingCart> ShoppingCarts { get; set; } = new List<ShoppingCart>();
         public ICollection<BookDiscount> BookDiscounts { get; set; } = new List<BookDiscount>();
         public ICollection<StockNotificationRequest> StockNotificationRequests { get; set; } = new List<StockNotificationRequest>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     }
 }

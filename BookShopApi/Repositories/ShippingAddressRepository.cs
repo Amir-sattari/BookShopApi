@@ -21,6 +21,14 @@ namespace BookShopApi.Repositories
             return await _context.ShippingAddresses.Include(sh => sh.Province).Include(sh => sh.City).ToListAsync();
         }
 
+        public async Task<ShippingAddress?> GetShippingAddressByIdAsync(int id)
+        {
+            return await _context.ShippingAddresses
+                .Include(sh => sh.Province)
+                .Include(sh => sh.City)
+                .FirstOrDefaultAsync(sh => sh.Id == id);
+        }
+
         public async Task<ShippingAddress?> GetShippingAddressByUserIdAsync(string userId)
         {
             var isUserIdExist = await _context.Users.AnyAsync(u => u.Id == userId);
