@@ -120,14 +120,42 @@ namespace BookShopApi.Services
                 throw new InvalidOperationException("User Not Found.");
 
             var roles = await _userManager.GetRolesAsync(user);
+            var (firstName, lastName) = UserNameHelper.Split(user.UserName);
             return new CurrentUserDto
             {
                 Id = user.Id,
+                FirstName = firstName,
+                LastName = lastName,
                 UserName = user.UserName ?? string.Empty,
                 PhoneNumber = user.PhoneNumber ?? string.Empty,
                 Roles = roles,
                 CanAccessAdmin = roles.Any(AppRoles.IsStaff)
             };
+        }
+
+        public async Task<CurrentUserDto> UpdateCurrentUserAsync(ClaimsPrincipal principal, UpdateProfileDto dto)
+        {
+            var userId = principal.GetUserId();
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new InvalidOperationException("User Not Found.");
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new InvalidOperationException("User Not Found.");
+
+            var phone = dto.PhoneNumber.Trim();
+            var phoneTaken = await _userManager.Users.AnyAsync(u => u.PhoneNumber == phone && u.Id != userId);
+            if (phoneTaken)
+                throw new InvalidOperationException("این شماره همراه قبلاً ثبت شده است.");
+
+            user.UserName = UserNameHelper.Combine(dto.FirstName, dto.LastName);
+            user.PhoneNumber = phone;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+                throw new InvalidOperationException(UserNameHelper.ToIdentityError(result));
+
+            return await GetCurrentUserAsync(principal);
         }
 
         private async Task EnsureUserRoleAsync(AppUser user)

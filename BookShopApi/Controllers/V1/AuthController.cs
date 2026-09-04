@@ -97,5 +97,22 @@ namespace BookShopApi.Controllers.V1
                 return Unauthorized();
             }
         }
+
+        [Authorize]
+        [HttpPut("Me")]
+        public async Task<ActionResult<CurrentUserDto>> UpdateCurrentUserAsync([FromBody] UpdateProfileDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                return Ok(await _authService.UpdateCurrentUserAsync(User, dto));
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new { ErrorMessage = e.Message });
+            }
+        }
     }
 }

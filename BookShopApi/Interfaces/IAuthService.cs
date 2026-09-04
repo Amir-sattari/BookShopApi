@@ -11,5 +11,6 @@ namespace BookShopApi.Interfaces
         Task<LoginResponseDto> SendLoginOtpAsync(LoginDto dto);
         Task<string> ValidateLoginAsync(VerifyOtpDto dto);
         Task<CurrentUserDto> GetCurrentUserAsync(ClaimsPrincipal principal);
+        Task<CurrentUserDto> UpdateCurrentUserAsync(ClaimsPrincipal principal, UpdateProfileDto dto);
     }
 }
