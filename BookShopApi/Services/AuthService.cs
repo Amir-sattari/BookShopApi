@@ -128,6 +128,8 @@ namespace BookShopApi.Services
                 LastName = lastName,
                 UserName = user.UserName ?? string.Empty,
                 PhoneNumber = user.PhoneNumber ?? string.Empty,
+                IsVerified = user.IsVerified,
+                CreatedAt = user.CreatedAt,
                 Roles = roles,
                 CanAccessAdmin = roles.Any(AppRoles.IsStaff)
             };

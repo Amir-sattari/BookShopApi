@@ -23,7 +23,7 @@ namespace BookShopApi.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> AddBookmarkAsync([FromBody] CreateBookmarkDto bookmarkDto)
         {
-            if (!this.TryResolveCurrentUser(bookmarkDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             bookmarkDto.UserId = currentUserId;
@@ -39,18 +39,15 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpGet("GetBookmarksByUserId/{userId}")]
-        public async Task<ActionResult<IEnumerable<Book>>> GetBookmarkedBooksByBookIdAsync([FromRoute] string userId)
+        [HttpGet("Mine")]
+        public async Task<ActionResult<IEnumerable<Book>>> GetMyBookmarksAsync()
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             try
             {
                 var bookmarkedBooks = await _bookmarkRepo.GetBookmarkedBooksByUserIdAsync(currentUserId);
-                if (bookmarkedBooks == null)
-                    return NotFound(new { Message = "No Books Founded" });
-
                 var bookDto = bookmarkedBooks.Select(book => book.ToBookDto($"{Request.Scheme}://{Request.Host}{book.ImageUrl}"));
                 return Ok(bookDto);
             }
@@ -60,8 +57,8 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpGet("GetBookmarksByBookId/{bookId:int}")]
-        public async Task<ActionResult<Book>> GetBookmarkedBookByBookIdAsync([FromRoute] int bookId)
+        [HttpGet("Mine/books/{bookId:int}")]
+        public async Task<ActionResult<Book>> GetMyBookmarkedBookAsync([FromRoute] int bookId)
         {
             if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
@@ -81,15 +78,15 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpDelete("DeleteBookmarkByUserId/{userId}")]
-        public async Task<IActionResult> DeleteBookmarkedBookByUserIdAsync([FromRoute] string userId)
+        [HttpDelete("Mine/{bookId:int}")]
+        public async Task<IActionResult> DeleteMyBookmarkAsync([FromRoute] int bookId)
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             try
             {
-                await _bookmarkRepo.DeleteBookmarkAsync(currentUserId);
+                await _bookmarkRepo.DeleteBookmarkAsync(currentUserId, bookId);
                 return Ok(new { Message = "Bookmark Removed Successfully" });
             }
             catch (Exception e)

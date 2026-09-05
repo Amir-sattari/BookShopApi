@@ -30,10 +30,10 @@ namespace BookShopApi.Controllers.V1
             return Ok(toAddressDto);
         }
 
-        [HttpGet("GetShippingAddressByUserId/{userId}")]
-        public async Task<ActionResult<ShippingAddress>> GetShippingAddressByUserIdAsync([FromRoute] string userId)
+        [HttpGet("Mine")]
+        public async Task<ActionResult<ShippingAddress>> GetMyShippingAddressAsync()
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             try
@@ -55,13 +55,13 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpPost("CreateShippingAddress")]
-        public async Task<ActionResult<ShippingAddress>> CreateShippingAddressAsync([FromBody] CreateShippingAddressDto addressDto)
+        [HttpPost("Mine")]
+        public async Task<ActionResult<ShippingAddress>> CreateMyShippingAddressAsync([FromBody] CreateShippingAddressDto addressDto)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!this.TryResolveCurrentUser(addressDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             addressDto.UserId = currentUserId;
@@ -69,7 +69,7 @@ namespace BookShopApi.Controllers.V1
             try
             {
                 var createdShippingAddress = await _shippingAddressRepo.CreateShippingAddressAsync(addressDto);
-                return Created($"api/shippingAddress/{createdShippingAddress.Id}", createdShippingAddress.ToShippingAddressDto());
+                return Created($"api/ShippingAddress/Mine", createdShippingAddress.ToShippingAddressDto());
             }
             catch (InvalidOperationException e)
             {
@@ -81,10 +81,10 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpPut("UpdateShippingAddress/{userId}")]
-        public async Task<IActionResult> UpdateShippingAddressAsync([FromBody] UpdateShippingAddressDto addressDto, [FromRoute] string userId)
+        [HttpPut("Mine")]
+        public async Task<IActionResult> UpdateMyShippingAddressAsync([FromBody] UpdateShippingAddressDto addressDto)
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             var updatedShippingAddress = await _shippingAddressRepo.UpdateShippingAddressAsync(addressDto, currentUserId);
@@ -95,10 +95,10 @@ namespace BookShopApi.Controllers.V1
             return NoContent();
         }
 
-        [HttpDelete("DeleteShippingAddress/{userId}")]
-        public async Task<IActionResult> DeleteShippingAddressAsync([FromRoute] string userId)
+        [HttpDelete("Mine")]
+        public async Task<IActionResult> DeleteMyShippingAddressAsync()
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             var updatedShippingAddress = await _shippingAddressRepo.DeleteShippingAddressByUserIdAsync(currentUserId);

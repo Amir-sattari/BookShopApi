@@ -4,7 +4,7 @@ namespace BookShopApi.Dtos.ShippingAddress
 {
     public class CreateShippingAddressDto
     {
-        [Required]
+        /// <summary>از claims پر می‌شود؛ کلاینت نباید بفرستد.</summary>
         public string UserId { get; set; } = string.Empty;
 
         [Required]

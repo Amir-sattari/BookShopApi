@@ -27,9 +27,10 @@ namespace BookShopApi.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteBookmarkAsync(string userId)
+        public async Task DeleteBookmarkAsync(string userId, int bookId)
         {
-            var existingBookmark = await _context.Bookmarks.FirstOrDefaultAsync(bk => bk.UserId == userId);
+            var existingBookmark = await _context.Bookmarks
+                .FirstOrDefaultAsync(bk => bk.UserId == userId && bk.BookId == bookId);
             if (existingBookmark == null)
                 throw new Exception("Bookmark Not Found");
 

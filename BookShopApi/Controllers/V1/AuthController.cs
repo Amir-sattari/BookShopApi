@@ -1,4 +1,5 @@
 ﻿using BookShopApi.Dtos.Auth;
+using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,17 @@ namespace BookShopApi.Controllers.V1
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly IProfileService _profileService;
+        private readonly IHostEnvironment _environment;
 
-        public AuthController(IAuthService authService)
+        public AuthController(
+            IAuthService authService,
+            IProfileService profileService,
+            IHostEnvironment environment)
         {
             _authService = authService;
+            _profileService = profileService;
+            _environment = environment;
         }
 
         [HttpPost("Register")]
@@ -42,7 +50,8 @@ namespace BookShopApi.Controllers.V1
             try
             {
                 var token = await _authService.ValidateRegisterAsync(verifyOtpDto);
-                return Ok(new { Message = "Verified Successfully", token });
+                AuthCookie.AppendAccessToken(Response, token, _environment.IsDevelopment());
+                return Ok(new { Message = "Verified Successfully" });
             }
             catch (Exception e)
             {
@@ -76,12 +85,20 @@ namespace BookShopApi.Controllers.V1
             try
             {
                 var token = await _authService.ValidateLoginAsync(verifyOtpDto);
-                return Ok(new { Message = "Login successful", token});
+                AuthCookie.AppendAccessToken(Response, token, _environment.IsDevelopment());
+                return Ok(new { Message = "Login successful" });
             }
             catch (Exception e)
             {
                 return BadRequest(new { Message = e.Message });
             }
+        }
+
+        [HttpPost("Logout")]
+        public IActionResult Logout()
+        {
+            AuthCookie.DeleteAccessToken(Response, _environment.IsDevelopment());
+            return Ok(new { Message = "Logged out" });
         }
 
         [Authorize]
@@ -91,6 +108,20 @@ namespace BookShopApi.Controllers.V1
             try
             {
                 return Ok(await _authService.GetCurrentUserAsync(User));
+            }
+            catch (InvalidOperationException)
+            {
+                return Unauthorized();
+            }
+        }
+
+        [Authorize]
+        [HttpGet("Me/Overview")]
+        public async Task<ActionResult<ProfileOverviewDto>> GetProfileOverviewAsync()
+        {
+            try
+            {
+                return Ok(await _profileService.GetOverviewAsync(User));
             }
             catch (InvalidOperationException)
             {

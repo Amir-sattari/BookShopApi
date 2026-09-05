@@ -7,7 +7,7 @@ namespace BookShopApi.Interfaces
     public interface IBookmarkRepository
     {
         Task AddBookmarkAsync(CreateBookmarkDto bookmarkDto);
-        Task DeleteBookmarkAsync(string userId);
+        Task DeleteBookmarkAsync(string userId, int bookId);
         Task<IEnumerable<Book>> GetBookmarkedBooksByUserIdAsync(string userId);
         Task<Book?> GetBookmarkedBookByBookIdAsync(int bookId);
        

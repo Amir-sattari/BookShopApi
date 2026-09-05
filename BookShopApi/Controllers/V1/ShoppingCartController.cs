@@ -27,10 +27,10 @@ namespace BookShopApi.Controllers.V1
             _couponRepo = couponRepository;
         }
 
-        [HttpGet("GetCartItemsByUserId/{userId}")]
-        public async Task<ActionResult<IEnumerable<ShoppingCart>>> GetCartItemsAsync([FromRoute] string userId)
+        [HttpGet("Mine")]
+        public async Task<ActionResult<IEnumerable<ShoppingCart>>> GetMyCartItemsAsync()
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             var cartItems = await _shoppingCartRepo.GetCartItemsAsync(currentUserId);
@@ -44,7 +44,7 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             cartDto.UserId = currentUserId;
@@ -58,7 +58,7 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             cartDto.UserId = currentUserId;
@@ -72,7 +72,7 @@ namespace BookShopApi.Controllers.V1
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             cartDto.UserId = currentUserId;
@@ -87,14 +87,14 @@ namespace BookShopApi.Controllers.V1
                 return BadRequest(new { Message = e.Message });
             }
         }
-        
+
         [HttpPut("DecrementCartItemQuantity")]
         public async Task<ActionResult<ShoppingCart>> DecrementCartItemQuantityAsync([FromBody] UpdateShoppingCartDto cartDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!this.TryResolveCurrentUser(cartDto.UserId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             cartDto.UserId = currentUserId;
@@ -110,20 +110,20 @@ namespace BookShopApi.Controllers.V1
             }
         }
 
-        [HttpDelete("RemoveFromCart/{userId}/{bookId:int}")]
-        public async Task<IActionResult> RemoveFromCartAsync([FromRoute] string userId, int bookId)
+        [HttpDelete("Mine/items/{bookId:int}")]
+        public async Task<IActionResult> RemoveFromMyCartAsync([FromRoute] int bookId)
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             await _shoppingCartRepo.RemovFromCartAsync(currentUserId, bookId);
             return NoContent();
         }
 
-        [HttpDelete("ClearCart/{userId}")]
-        public async Task<IActionResult> ClearCartAsync([FromRoute] string userId)
+        [HttpDelete("Mine")]
+        public async Task<IActionResult> ClearMyCartAsync()
         {
-            if (!this.TryResolveCurrentUser(userId, out var currentUserId, out var error))
+            if (!this.TryResolveCurrentUser(null, out var currentUserId, out var error))
                 return error!;
 
             await _shoppingCartRepo.ClearCartAsync(currentUserId);

@@ -16,6 +16,8 @@ namespace BookShopApi.Mappers
                 PhoneNumber = address.PhoneNumber,
                 ProvinceId = address.ProvinceId,
                 CityId = address.CityId,
+                ProvinceName = address.Province?.Name ?? string.Empty,
+                CityName = address.City?.Name ?? string.Empty,
                 Address = address.Address,
                 PostCode = address.PostCode,
             };

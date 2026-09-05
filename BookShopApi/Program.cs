@@ -1,4 +1,6 @@
 using BookShopApi.Data;
+using BookShopApi.Extensions;
+using BookShopApi.Helpers;
 using BookShopApi.Interfaces;
 using BookShopApi.Models;
 using BookShopApi.Repositories;
@@ -12,11 +14,8 @@ using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
- 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -57,6 +56,21 @@ builder.Services.AddAuthentication(options =>
         RoleClaimType = ClaimTypes.Role,
         NameClaimType = ClaimTypes.Name
     };
+    options.ReadTokenFromCookie();
+});
+
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+    ?? ["http://localhost:4200"];
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy.WithOrigins(allowedOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
 
 builder.Services.AddAuthorization();
@@ -69,6 +83,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookmarkRepository, BookmarkRepository>();
@@ -94,13 +109,13 @@ var app = builder.Build();
 if (!EF.IsDesignTime)
     await LocationSeeder.SeedAsync(app.Services);
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 }
+
+app.UseCors("Frontend");
 
 app.UseStaticFiles();
 app.UseDefaultFiles();
